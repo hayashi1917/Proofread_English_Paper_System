@@ -1,0 +1,28 @@
+[project]
+name = "kinden"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "hayashi1917",email = "kusagamebibinnba@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.11"
+uvicorn = "^0.34.0"
+python-dotenv = "^1.0.1"
+openai = "^1.65.2"
+pydantic = "^2.10.6"
+langchain-core = "^0.3.40"
+langchain-openai = "^0.3.7"
+azure-search-documents = "^11.5.2"
+azure-ai-documentintelligence = "^1.0.2"
+python-multipart = "^0.0.20"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
