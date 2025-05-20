@@ -1,5 +1,5 @@
 [project]
-name = "kinden"
+name = "pro_con_b4"
 version = "0.1.0"
 description = ""
 authors = [
@@ -21,6 +21,10 @@ langchain-openai = "^0.3.7"
 azure-search-documents = "^11.5.2"
 azure-ai-documentintelligence = "^1.0.2"
 python-multipart = "^0.0.20"
+google-api-python-client = "^2.169.0"
+google-auth-httplib2 = "^0.2.0"
+google-auth-oauthlib = "^1.2.2"
+langchain = "^0.3.25"
 
 
 [build-system]
