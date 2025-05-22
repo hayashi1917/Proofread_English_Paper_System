@@ -7,7 +7,7 @@ import json
 
 USER_PROMPT = """
 あなたは学術ドキュメント解析の専門家です。
-入力された LaTeX テキストから、有用な知見を「（200 字以内）のナレッジ単位」に分割し、
+入力された LaTeX テキストから、有用な知見を「ナレッジ単位」に分割し、
 以下フォーマットで JSON 配列として出力してください。
 ナレッジは体言止めで出力してください。
 
@@ -33,28 +33,34 @@ SYSTEM_PROMPT = """
 
 
 def structure_tex_to_knowledge(chunks: List[Dict[str, Any]]) -> KnowledgeFromLatexList:
-    knowledge_list = []
+    aggregated: list[KnowledgeFromLatex] = []
+    azure_openai_client = AzureOpenAIClient()
     for document in chunks:
         document_name = document["name"]
         knowledge_type = document["knowledge_type"]
         
         for chunk in document["chunks"]:
-            azure_openai_client = AzureOpenAIClient()
+            per_chunk: list[KnowledgeFromLatex] = []
             prompt = ChatPromptTemplate.from_messages([
                 ("system", SYSTEM_PROMPT),
                 ("user", USER_PROMPT),
             ])
             chain = prompt | azure_openai_client.get_openai_client().with_structured_output(KnowledgeFromLatexList)
             chunk_text = chunk["chunk_text"]
+            print("chunk_text:", chunk_text)
             results = chain.invoke({"content": chunk_text})
+            per_chunk: list[KnowledgeFromLatex] = []
             
             for result in results.knowledge_list:   
                 result.knowledge_type = knowledge_type
                 result.reference_url = document_name
-                
-                knowledge_list.append(result)
+                print("result:", result)
+                per_chunk.append(result)
+
+            aggregated.extend(per_chunk)
+
     
-    return KnowledgeFromLatexList(knowledge_list=knowledge_list)
+    return aggregated
 
 
 

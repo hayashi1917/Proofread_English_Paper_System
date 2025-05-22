@@ -3,4 +3,5 @@
 credentials.json
 token.json
 __pycache__/
-output/
+chroma_db/
+.poetry.lock

@@ -53,6 +53,7 @@ def download_knowledge_tex_files(folder_id: str) -> list[bytes]:
                 fh.seek(0)
                 tex_file["content"] = fh.read()
                 tex_files.append(tex_file)
+                print("tex_file:", tex_file)
             page_token = resp.get("nextPageToken", None)
             if page_token is None:
                 break

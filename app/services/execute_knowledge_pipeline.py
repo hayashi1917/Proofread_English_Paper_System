@@ -2,15 +2,18 @@ from app.schemas.schemas import KnowledgeFromLatexList, KnowledgeFromLatex
 from app.services.access_google_drive import download_knowledge_tex_files
 from app.services.chunking_file import chunking_tex_files
 from app.services.structure_tex_to_knowledge import structure_tex_to_knowledge
-import os
+from app.services.utils.vector_store_service import VectorStoreService
+from pathlib import Path
 from dotenv import load_dotenv
 import csv
 from datetime import datetime
 from typing import List
+import pandas as pd
+import ast
 
 load_dotenv(".env.local")
 
-def save_knowledge_to_csv(knowledge_list: KnowledgeFromLatexList, output_dir: str = "output") -> str:
+def save_knowledge_to_csv(knowledge_list: List[KnowledgeFromLatex], output_dir: str = "output") -> str:
     """
     KnowledgeFromLatexListをCSVファイルとして保存する
     
@@ -33,7 +36,7 @@ def save_knowledge_to_csv(knowledge_list: KnowledgeFromLatexList, output_dir: st
         writer = csv.DictWriter(f, fieldnames=['knowledge', 'issue_category', 'reference_url', 'knowledge_type'])
         writer.writeheader()
         
-        for knowledge in knowledge_list.knowledge_list:
+        for knowledge in knowledge_list:
             writer.writerow({
                 'knowledge': knowledge.knowledge,
                 'issue_category': knowledge.issue_category,
@@ -45,14 +48,20 @@ def save_knowledge_to_csv(knowledge_list: KnowledgeFromLatexList, output_dir: st
 
 def execute_knowledge_pipeline_batch() -> KnowledgeFromLatexList:
     # GoogleDriveからファイルを取得
-    tex_files = download_knowledge_tex_files(folder_id=os.getenv('KNOWLEDGE_TEX_FOLDER_ID'))
+    print("ファイルをGoogleドライブから取得中")
+    tex_files = download_knowledge_tex_files(folder_id=os.getenv('TEST_FOLDER_ID'))
     # ファイルをチャンク分割
+    print("ファイルをチャンク分割中")
     chunks = chunking_tex_files(tex_files)
     # チャンク分割したファイルからナレッジのリストを作成
+    print("ナレッジのリストを作成中")
     knowledge_list = structure_tex_to_knowledge(chunks)
     
     # CSVファイルとして保存
+    print("CSVファイルとして保存中")
     output_path = save_knowledge_to_csv(knowledge_list)
+
     print(f"Knowledge saved to: {output_path}")
 
     return knowledge_list
+
