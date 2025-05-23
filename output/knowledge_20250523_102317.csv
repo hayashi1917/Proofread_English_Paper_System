@@ -1,0 +1,209 @@
+knowledge,issue_category,reference_url,knowledge_type
+AAAIが著者から提供された電子ソースから直接、会議録、作業ノート、技術報告を作成すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+出版物のすべての論文が均一な外観を持つために、著者は指示に従う必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+Microsoft Wordを使用している場合は、別の文書に指示が提供されること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+他のフォーマットソフトウェアを使用する場合は、事前にAAAI Pressから許可を得る必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+これらの指示は、経験豊富なLaTeXユーザー向けの一般的なガイドであること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+経験のないLaTeXユーザーは、論文のフォーマットに使用しないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+AAAIはサポートを提供できず、付随するスタイルファイルは動作することが保証されていないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+得られた結果が仕様に従っていない場合は、ソースファイルを修正する必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+最新のAAAI Press LaTeXマクロの使用,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著者キットのダウンロード,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著作権フォームの記入、署名、期限内の返送,['形式'],Copy of AAAI-format.tex,学会フォーマット
+論文のソースとPDFを著者向けのフォーマット指示に従って整形,['形式'],Copy of AAAI-format.tex,学会フォーマット
+電子ファイルと要旨を期限内に電子提出フォームを使用して提出,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著作権フォームや必要なページまたはフォーマット料金をAAAI Pressに期限内に送付,['形式'],Copy of AAAI-format.tex,学会フォーマット
+提出前に論文のすべてのページを確認,['形式'],Copy of AAAI-format.tex,学会フォーマット
+AAAI Pressに提出する論文には有効な署名済み著作権フォームが必要,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著作権または配布許可フォームを送信しないと論文は出版されない,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著者キットにAAAI著作権および配布許可フォームのPDF版が含まれている,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFLaTeX でコンパイルする必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+すべてのフォントは PDF ファイルに埋め込む必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+スタイルシートの変更は許可されていない,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイプ 3 フォントは使用できない,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイトルは米国の大文字化ルールに従う必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+Times または Nimbus フォントパッケージを使用する必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+LaTeX 209 ドキュメントは使用できない,['形式'],Copy of AAAI-format.tex,学会フォーマット
+非英語言語サポートが必要なフォントはアウトラインに変換する必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+AAAI スタイルの二段組形式が必要である,['形式'],Copy of AAAI-format.tex,学会フォーマット
+最終提出用の用紙サイズは US レターである,['形式'],Copy of AAAI-format.tex,学会フォーマット
+適切にサイズ調整されたグラフィックスの必要性,['形式'],Copy of AAAI-format.tex,学会フォーマット
+完全準拠のPDFファイルの提出が必要,['形式'],Copy of AAAI-format.tex,学会フォーマット
+単一の.texファイルとしてのLaTeXソースファイルの提出が必要,['形式'],Copy of AAAI-format.tex,学会フォーマット
+すべてのグラフィックスファイルの提出が必要,['形式'],Copy of AAAI-format.tex,学会フォーマット
+コンパイルされたソースのLaTeX生成ファイルの提出が必要,['形式'],Copy of AAAI-format.tex,学会フォーマット
+非標準スタイルファイルの提出が必要,['形式'],Copy of AAAI-format.tex,学会フォーマット
+複数のテキストファイルでのソース提出は不可,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFとソースファイルを単一の圧縮アーカイブにまとめる必要性,['形式'],Copy of AAAI-format.tex,学会フォーマット
+実際に使用されていないファイルの提出は不可,['形式'],Copy of AAAI-format.tex,学会フォーマット
+不要なファイルを送信しないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+最新のAAAIスタイルファイルをダウンロードすること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+文書のプレアンブルに特定の行を配置する必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+著者数に応じて行を追加または削除すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+セクション番号の深さを設定する必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+サンセリフ体にはhelvetパッケージを使用すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+タイプライターフォントにはcourierパッケージを使用すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+PSNFSS2eパッケージが必要であること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+サブサブセクションの番号付けは使用しないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+必要なパッケージの指定,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDF	extLaTeX{}用のメタデータの設定,['形式'],Copy of AAAI-format.tex,学会フォーマット
+セクション番号の使用設定,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイトル、著者、住所情報の設定,['形式'],Copy of AAAI-format.tex,学会フォーマット
+文書の本文の開始,['形式'],Copy of AAAI-format.tex,学会フォーマット
+参考文献の設定,['形式'],Copy of AAAI-format.tex,学会フォーマット
+文書メタデータの挿入が必要,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFファイルに文書概要情報が含まれる,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDF	extTeX{}と互換性のないイラストの注意,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDF	ex に互換性のないイラストの変換が必要,['形式'],Copy of AAAI-format.tex,学会フォーマット
+メタデータには LaTeX コードや非 ASCII 文字を含めないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+論文のタイトルはそのまま入力すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著者名は論文に表示される順に入力すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+文書の準備は特定のコマンドに従うこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+aaai.sty および aaai.bst と互換性のないパッケージの使用禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+使用禁止のコマンドが存在すること,['文法'],Copy of AAAI-format.tex,学会フォーマット
+論文は二段組形式で印刷する必要があること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+論文は8.5 x 11インチのUSレターサイズの用紙に2カラム形式で印刷される必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+マージンは上部0.75インチ、左0.75インチ、右0.75インチ、下部1.25インチである必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+デフォルトの用紙サイズはA4であるが、USレターサイズに変更する必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+USレターサイズに変更するには、documentclassオプションに[letterpaper]を追加する必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFLaTeXを使用し、preambleにpdfpagewidthとpdfpageheightを設定する必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+Geometryパッケージを使用してページサイズを変更しないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+各カラムは3.3インチの幅で、カラム間の隙間は0.375インチである必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+論文が長すぎる場合は、frenchspacingを有効にしてスペースを減らすことができる,['形式'],Copy of AAAI-format.tex,学会フォーマット
+図の環境ではcenteringを使用することが推奨される,['形式'],Copy of AAAI-format.tex,学会フォーマット
+ページレイアウトを変更するコマンドの禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+"図のファイル形式は.jpg, .png, .pdfのみ使用可能",['形式'],Copy of AAAI-format.tex,学会フォーマット
+図はLaTeXの外でトリミングする必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+文献リストのフォントサイズを変更する方法,['形式'],Copy of AAAI-format.tex,学会フォーマット
+ページレイアウトを変更すると追加料金が発生する,['形式'],Copy of AAAI-format.tex,学会フォーマット
+図の解像度が低いファイル形式は使用不可,['形式'],Copy of AAAI-format.tex,学会フォーマット
+文書が明らかに圧縮されている場合は受理されない,['形式'],Copy of AAAI-format.tex,学会フォーマット
+セクション間のスペースを変更するコマンドは疑問視される,['形式'],Copy of AAAI-format.tex,学会フォーマット
+論文のフォーマットはTimes RomanまたはNimbus,['形式'],Copy of AAAI-format.tex,学会フォーマット
+Computer ModernやPalatinoなどのフォントは受け付けない,['形式'],Copy of AAAI-format.tex,学会フォーマット
+サンセリフ体はCourierを使用する,['形式'],Copy of AAAI-format.tex,学会フォーマット
+数学にはSymbolまたはLucidaまたはComputer Modernを使用する,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイプ3フォントは使用しない,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイプ3ビットマップフォントは固定解像度プリンタ用に設計されている,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイプ3フォントを含むファイルは拒否される,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイプ3フォントを埋め込まないための効果的な回避策がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+LaTeX2eでtimes、helvet、courierパッケージを使用する,['形式'],Copy of AAAI-format.tex,学会フォーマット
+デフォルトのフォントサイズは10ポイント、行間は12ポイント,['形式'],Copy of AAAI-format.tex,学会フォーマット
+新しい段落を始める際のインデントは10ポイント,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+Computer Modernフォントは数学に使用可能だが、テキストには使用不可,['単語'],Copy of AAAI-format.tex,学会フォーマット
+タイトルはミックスケースで表示する必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイトルは16ポイントの太字で、ページの上部に中央揃えで配置する,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著者名はタイトルの下に12ポイントで中央揃えで表示する,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著者の所属と住所は9ポイントのローマン体で表示する,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイトルが長い場合、指定されたポイントサイズを最大2ポイント減少させることができる,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著者情報は異なるスタイルで設定可能,['形式'],Copy of AAAI-format.tex,学会フォーマット
+同一機関の複数の著者の場合、'and'を使用する,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著者名が1行に収まらない場合、改行を使用する,['形式'],Copy of AAAI-format.tex,学会フォーマット
+異なる機関からの著者の表記方法,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著者の新しい行を開始するためのコマンド,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイトルと著者情報が収まらない場合の対処法,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著作権表示の自動表示について,['形式'],Copy of AAAI-format.tex,学会フォーマット
+技術報告書に著作権表示を含める必要がないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著作権行の無効化や変更が必要な場合、論文は出版されない可能性がある,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+謝辞セクションには、スポンサー機関へのクレジットを記載する必要がある,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+著者またはタイトルコマンド内での謝辞は、特定の形式で記載する必要がある,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+謝辞コマンドは脆弱であり、保護が必要である,['文法'],Copy of AAAI-format.tex,学会フォーマット
+要約は文書の最初の列の冒頭に配置する必要がある,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+要約のタイトルは太字で中央揃えにする必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+要約は一段落で、論文の目的と重要性を説明する必要がある,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+要約の長さは200語以内に制限する必要がある,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+短い要約の提供が必要,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+ページ番号を印刷しないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+本文は10ポイントのフォントで12ポイントの行間でフォーマットすること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+引用は著者の姓と年を含めること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+複数の著者は特定の形式で記載すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+4人以上の著者は最初の著者のみを記載し、et al.を使用すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+長い引用は左右10ポイントのインデントを使用すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+引用符はブロック形式でオフセットされたテキストには必要ない,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+脚注は可能な限り避けること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+脚注は連続番号で記載し、ページの下部に配置すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+記事、接続詞、前置詞はすべて小文字で表示する必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+第2レベルの見出しは11ポイントの太字のTimes Romanフォントで表示する必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+段落間に行を空けてはいけない,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+第3レベルの見出しはテキストと一緒に表示される必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+セクション番号の使用は任意である,['形式'],Copy of AAAI-format.tex,学会フォーマット
+謝辞セクションは本文の後に表示される必要がある,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+謝辞は3文以内に制限することが推奨される,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+付録は謝辞の後に続く必要がある,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+参考文献セクションは「References」とラベル付けされる必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+参考文献セクションは「References」とラベル付けされ、論文の最後に配置されるべき,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+参考文献は一貫した形式で準備されるべき,['形式'],Copy of AAAI-format.tex,学会フォーマット
+不適切に準備された参考文献は論文と研究の質を悪化させる,['文法'],Copy of AAAI-format.tex,学会フォーマット
+図、図面、表、写真は最初に言及される場所の近くに配置されるべき,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+図は連続的に番号付けされるべき,['形式'],Copy of AAAI-format.tex,学会フォーマット
+図の番号とキャプションは図の下に表示されるべき,['形式'],Copy of AAAI-format.tex,学会フォーマット
+図のラベルやその他のテキストは少なくとも9ポイントのサイズであるべき,['形式'],Copy of AAAI-format.tex,学会フォーマット
+低解像度のビットマップ（例：72 dpi）は使用できない,['形式'],Copy of AAAI-format.tex,学会フォーマット
+低解像度のファイルは印刷時にぼやけて読めなくなる,['文法'],Copy of AAAI-format.tex,学会フォーマット
+図は266 dpi以上の解像度であるべき,['形式'],Copy of AAAI-format.tex,学会フォーマット
+図や表、方程式が余白に侵入することの禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+オーバーフローを修正する必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+論文は白黒およびグレースケールで印刷される,['形式'],Copy of AAAI-format.tex,学会フォーマット
+カラーフィギュアの使用を避けることの推奨,['形式'],Copy of AAAI-format.tex,学会フォーマット
+コンピュータ描画ソフトウェアの使用推奨,['形式'],Copy of AAAI-format.tex,学会フォーマット
+均一な線幅の使用が望ましい,['形式'],Copy of AAAI-format.tex,学会フォーマット
+シャーディングは133ライン/インチが望ましい,['形式'],Copy of AAAI-format.tex,学会フォーマット
+図の呼び出しにはTimes RomanまたはHelveticaを使用すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+ヘアライン幅の線を使用しないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+写真や画像はグレースケールであるべき,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFのメディアボックスのサイズ変更はグラフィックスプログラムで行うべき,['形式'],Copy of AAAI-format.tex,学会フォーマット
+グラフィックスに含まれるすべてのフォントを埋め込む必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+aaai.styファイルはBibTeXでの参考文献のフォーマットに関する定義を含む,['形式'],Copy of AAAI-format.tex,学会フォーマット
+aaai.bstスタイルファイルはAAAIウェブサイトの著者キットで入手可能,['形式'],Copy of AAAI-format.tex,学会フォーマット
+文書の最後に特定の行を追加する必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+参考文献の引用には複数のコマンドが利用可能,['形式'],Copy of AAAI-format.tex,学会フォーマット
+aaai.styファイルはhyperrefおよびnatbibパッケージと互換性がない,['形式'],Copy of AAAI-format.tex,学会フォーマット
+書籍の参考文献は特定の形式で表示されるべき,['形式'],Copy of AAAI-format.tex,学会フォーマット
+複数著者による書籍の引用形式,['形式'],Copy of AAAI-format.tex,学会フォーマット
+学術雑誌記事の引用形式,['形式'],Copy of AAAI-format.tex,学会フォーマット
+雑誌記事の引用形式,['形式'],Copy of AAAI-format.tex,学会フォーマット
+学会発表論文の引用形式（学会発行）,['形式'],Copy of AAAI-format.tex,学会フォーマット
+学会発表論文の引用形式（出版社発行）,['形式'],Copy of AAAI-format.tex,学会フォーマット
+大学の技術報告書の引用形式,['形式'],Copy of AAAI-format.tex,学会フォーマット
+学位論文の引用形式,['形式'],Copy of AAAI-format.tex,学会フォーマット
+今後の出版物の引用形式,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFファイルはプラットフォームに依存しない,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+PDF文書は誰でもアクセス可能,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+PDF文書を作成する際のフォントの要件,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイプ1フォントの使用が推奨される,['形式'],Copy of AAAI-format.tex,学会フォーマット
+標準のフォントパッケージのみを使用すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDF作成時にすべてのフォントを埋め込む必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+T1フォントエンコーディングパッケージを使用しないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFLaTeXを使用することが推奨される,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFLaTeXではすべてのグラフィックスと画像がPDF形式である必要がある,['形式'],Copy of AAAI-format.tex,学会フォーマット
+dvipdfスクリプトの使用を避けるべきである,['形式'],Copy of AAAI-format.tex,学会フォーマット
+dvipdfmパッケージはグラフィックスを含む文書には使用しないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+Ghostscriptを使用してPDFを作成しないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+GhostScriptを使用してPDFを作成しないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFファイル内のタイプ3フォントを確認すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+インポートしたグラフィックファイルのフォント問題を確認すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFのすべてのページを確認すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+ページサイズがA4であることを確認すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+すべてのフォントが埋め込まれていることを確認すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+方程式や図が余白に入っていないことを確認すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+すべての図を含めること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+タイトルの混合ケースキャピタリゼーションルールに従うこと,['文法'],Copy of AAAI-format.tex,学会フォーマット
+著作権通知を含めること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+ファイル名をイベント名や一般的な名前で命名することのリスク,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+AAAIへの電子ファイル提出は二段階のプロセス,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+提出に関する質問はAAAI Pressに連絡すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+技術的な質問はサイトの専門家に連絡すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+複雑なマクロやスタイルファイルを使用しないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+LaTeXは習得が難しいプログラムであること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+Michael Shellの文書を読むことを推奨する,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+AAAIはPeter Patel Schneiderに感謝していること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+Barbara Beetonを含むハッカーへの感謝,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+George FergusonのスタイルとBibTeXファイルのガイドへの感謝,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+Hans Guesgenによるタイムリーな修正への感謝,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+Schlumberger Palo Alto ResearchなどによるLaTeXおよびBibTeXファイルの準備支援,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+Sunil Issarによる文献スタイルの変更,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+J. Scott Penberthyによるpubnoteの追加,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+AAAI著作権スラッグ印刷のためのGeorge Fergusonのサポート,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+AAAIスタッフによるaaai.styおよびaaai.bstへの追加変更,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+指示を注意深く読むことへの感謝,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+電子ファイルの受け取りを楽しみにしている,['段落構成'],Copy of AAAI-format.tex,学会フォーマット

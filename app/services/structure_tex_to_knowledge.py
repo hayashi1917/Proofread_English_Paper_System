@@ -5,7 +5,7 @@ import typing
 from typing import List, Dict, Any
 import json
 
-USER_PROMPT = """
+SYSTEM_PROMPT = """
 あなたは学術ドキュメント解析の専門家です。
 入力された LaTeX テキストから、有用な知見を「ナレッジ単位」に分割し、
 以下フォーマットで JSON 配列として出力してください。
@@ -14,7 +14,7 @@ USER_PROMPT = """
 # 出力仕様
 各要素は必ず次を含む
 - "knowledge"       : ナレッジテキスト
-- "issue_category"  : ["段落構成" | "文法" | "単語" | "形式"] から 1–2 個
+- "issue_category"  : ["段落構成" | "文法" | "単語" | "形式"] 
 
 # 制約
 * JSON 以外を返さない
@@ -22,7 +22,7 @@ USER_PROMPT = """
 * 同一内容は重複させない
 """
 
-SYSTEM_PROMPT = """
+USER_PROMPT = """
 # 入力資料（LaTeX）
 {content}
 
@@ -47,14 +47,20 @@ def structure_tex_to_knowledge(chunks: List[Dict[str, Any]]) -> KnowledgeFromLat
             ])
             chain = prompt | azure_openai_client.get_openai_client().with_structured_output(KnowledgeFromLatexList)
             chunk_text = chunk["chunk_text"]
-            print("chunk_text:", chunk_text)
+            print("--------------------------------")
+            print("chunk_text:")
+            print(chunk_text)
+            print("--------------------------------")
             results = chain.invoke({"content": chunk_text})
             per_chunk: list[KnowledgeFromLatex] = []
             
             for result in results.knowledge_list:   
                 result.knowledge_type = knowledge_type
                 result.reference_url = document_name
-                print("result:", result)
+                print("--------------------------------")
+                print("result:")
+                print(result)
+                print("--------------------------------")
                 per_chunk.append(result)
 
             aggregated.extend(per_chunk)

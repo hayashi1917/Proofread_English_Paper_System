@@ -25,7 +25,6 @@ import re
 
 
 
-# \section, \section*, \subsection, \chapter すべてを検出
 SECTION_RE = re.compile(
     r'\\(?:section)\*?\s*{[^}]*}',
     flags=re.IGNORECASE

@@ -7,6 +7,8 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 from googleapiclient.errors import HttpError
 from langchain.text_splitter import LatexTextSplitter
+from typing import List, Union
+
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
 def download_folder_contents(folder_id, output_dir):
@@ -97,6 +99,22 @@ def chunking_tex(tex_file: str) -> list[str]:
 
 
 import re
+
+SECTION_RE = re.compile(
+    r'\\(?:section)\*?\s*{[^}]*}',
+    flags=re.IGNORECASE
+)
+
+def _ensure_str(data: Union[str, bytes]) -> str:
+    """bytes → str を安全に変換（UTF-8→Shift-JISフォールバック）"""
+    if isinstance(data, str):
+        return data
+    for enc in ("utf-8", "utf-8-sig", "shift_jis", "cp932"):
+        try:
+            return data.decode(enc)
+        except UnicodeDecodeError:
+            continue
+    return data.decode("utf-8", errors="replace") 
 
 def get_document_body(latex_string):
     """
@@ -218,18 +236,44 @@ def split_tex_by_section(latex_string):
         
     return extracted_sections
 
+def split_latex_by_section(latex: Union[str, bytes]) -> List[str]:
+    """LaTeX 文字列をセクション区切りで分割し、最低 1 チャンク返す"""
+    text = _ensure_str(latex)
+    # 前文（\begin{document} 以前）は要らない場合が多いので除外
+    doc_start = text.find(r"\begin{document}")
+    if doc_start != -1:
+        text = text[doc_start:]
+
+    matches = list(SECTION_RE.finditer(text))
+    if not matches:                      # セクションが無い ⇢ 全文 1 チャンク
+        return [text.strip()]
+
+    chunks = []
+    for i, m in enumerate(matches):
+        start = m.start()
+        end   = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+        chunks.append(text[start:end].strip())
+
+    return chunks
+
+def split_tex_by_langchain(latex_string):
+    splitter = LatexTextSplitter(chunk_size=500, chunk_overlap=200)
+    chunks = splitter.split_text(latex_string)
+    return chunks
+
 def main():
     tex_file = "neurips_2024.tex"
 
     with open(tex_file, "r") as f:
         tex_file = f.read()
 
-    sections = split_tex_by_section(tex_file)
+    sections = split_latex_by_section(tex_file)
 
     for section in sections:
-        print("section['title_clean']: ", section['title_clean'])
-        print("section['content_raw']: ", section['content_raw'])
+        print("チャンク：")
+        print(section)
         print("--------------------------------")
+
 
 if __name__ == "__main__":
     main()
