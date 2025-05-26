@@ -62,3 +62,15 @@ def download_knowledge_tex_files(folder_id: str) -> list[bytes]:
     except HttpError as error:
         print(f"An error occurred: {error}")
         return []
+
+
+def download_pre_proofread_tex_file(folder_id: str) -> bytes:
+    """ 
+    プルーフリード前のファイルをダウンロードする。
+    入力: フォルダID
+    出力: ダウンロードしたファイルのバイトストリーム
+    """
+    
+    # 最初のファイルを返す（通常は1つだけ）
+    tex_files = download_knowledge_tex_files(folder_id)
+    return tex_files[0]["content"]

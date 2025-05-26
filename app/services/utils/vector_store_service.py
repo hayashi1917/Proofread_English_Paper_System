@@ -34,8 +34,8 @@ class VectorStoreService:
             if documents_to_add:
                 self.chroma_client.add_documents(documents=documents_to_add)
 
-    def get_knowledge_from_vector_store(self, query: str):
-        results = self.chroma_client.similarity_search(query, k=10)
+    def get_knowledge_from_vector_store(self, query: str, k: int = 10):
+        results = self.chroma_client.similarity_search(query, k)
         return results
     
     def get_knowledge_from_vector_store_by_issue_category(self, query: str, issue_category: str):

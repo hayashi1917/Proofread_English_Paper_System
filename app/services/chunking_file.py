@@ -89,7 +89,7 @@ def chunking_tex_files(tex_files: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     results: List[Dict[str, Any]] = []
 
     for tex in tex_files:
-        chunks = split_latex_by_splitter(tex["content"])
+        chunks = split_latex_by_section(tex["content"])
         print(f"{tex['name']} → {len(chunks)} 個に分割")
 
         results.append(
@@ -102,3 +102,18 @@ def chunking_tex_files(tex_files: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             }
         )
     return results
+
+def chunking_tex_file(tex: str) -> List[str]:
+    """
+    LaTeX ソースをチャンク分割する
+    Parameters
+    ----------
+    tex : str
+        LaTeX ソースコード
+
+    Returns
+    -------
+    chunks : list[str]
+        チャンク済み文字列のリスト
+    """
+    return split_latex_by_section(tex)

@@ -25,3 +25,24 @@ class KnowledgeFromLatexList(BaseModel):
 
 class SearchKnowledgeQuery(BaseModel):
     query: str = Field(..., description="検索クエリ")
+
+class CreateQueriesByHyDE(BaseModel):
+    queries : conlist(str, min_length=1, max_length=10) = Field(
+        ...,
+        description="HyDEによる生成クエリのリスト（1〜10 件）"
+    )
+
+class ProofreadResult(BaseModel):
+    pre_proofread: Optional[str] = Field(
+        None, 
+        description="校正前のテキスト"
+    )
+    post_proofread: str = Field(
+        ..., 
+        description="校正後のテキスト"
+    )
+    description: str = Field(
+        ..., 
+        description="校正の根拠"
+    )
+
