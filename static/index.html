@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeX論文校正システム - 修正版</title>
+    <style>
+        /* 前回のCSSをそのまま使用 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5; /* 少し変更 */
+            padding: 20px;
+            color: #333; /* 基本文字色 */
+        }
+
+        .container {
+            max-width: 1000px; /* 少し広げる */
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* 少し濃く */
+            overflow: hidden;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 25px 20px; /* 少し調整 */
+            text-align: center;
+        }
+        .header h1 {
+            margin-bottom: 5px;
+        }
+
+        .upload-section {
+            padding: 30px;
+            border-bottom: 1px solid #e0e0e0; /* 少し濃く */
+        }
+
+        .upload-area {
+            border: 2px dashed #bdc3c7; /* 少し細く */
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .upload-area:hover {
+            border-color: #3498db;
+            background: #e9f7fd; /* 少し変更 */
+        }
+
+        .upload-area.dragover {
+            border-color: #2ecc71;
+            background: #e6f7ee; /* 少し変更 */
+        }
+
+        .upload-text {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .file-types {
+            color: #777; /* 少し濃く */
+            font-size: 14px;
+        }
+
+        .file-input-visible {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc; /* 少し変更 */
+            border-radius: 4px;
+            background: #fdfdfd;
+        }
+
+        .debug-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f3f5; /* 少し変更 */
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 13px; /* 少し大きく */
+            line-height: 1.5; /* 行間調整 */
+            max-height: 200px;
+            overflow-y: auto;
+            color: #495057;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px; /* 少し太く */
+            background: #e9ecef; /* 少し変更 */
+            border-radius: 4px; /* 丸み調整 */
+            margin-top: 20px;
+            display: none;
+            overflow: hidden; /* Fillがはみ出ないように */
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #007bff; /* 青系に変更 */
+            border-radius: 4px; /* 丸み継承 */
+            width: 0%;
+            transition: width 0.4s ease-in-out; /* 少し滑らかに */
+        }
+
+        .results-section {
+            padding: 30px; /* upload-section と合わせる */
+            /* display: none; はJavaScriptで制御 */
+        }
+        .results-section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #555; /* 少し濃く */
+        }
+
+        .spinner {
+            border: 5px solid #f3f3f3; /* 少し太く */
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 45px; /* 少し大きく */
+            height: 45px;
+            animation: spin 0.8s linear infinite; /* 少し速く */
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 校正結果アイテムのスタイル */
+        .proofread-item {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .proofread-item h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #007bff;
+            font-size: 1.1em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        .proofread-item strong {
+            color: #495057;
+        }
+        .proofread-item p, .proofread-item pre {
+            margin-top: 5px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            font-size: 0.95em;
+            white-space: pre-wrap; /* 改行とスペースを保持 */
+            word-wrap: break-word; /* 長い単語を折り返す */
+            background-color: #f8f9fa; /* テキストブロックの背景 */
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #e9ecef;
+        }
+        .proofread-item .label { /* strongタグの代わりに使用することも */
+            font-weight: bold;
+            color: #343a40;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .knowledge-text { /* knowledge表示用 */
+            font-size: 0.85em;
+            color: #6c757d;
+            max-height: 150px; /* 長すぎる場合に備えて高さを制限 */
+            overflow-y: auto; /* スクロール可能に */
+        }
+        .error-message {
+            color: #dc3545;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TeX論文校正システム</h1>
+            <p>TeXファイルをアップロードして自動校正を行います</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-text">TeXファイルをドラッグ&ドロップまたはクリックして選択</div>
+                <div class="file-types">対応形式: .tex ファイル</div>
+                <input type="file" id="fileInputHidden" accept=".tex" style="display: none;">
+            </div>
+
+            <div class="file-input-visible" style="display:none;"> {/* 通常は非表示 */}
+                <label for="fileInputVisible">直接ファイル選択（テスト用）:</label>
+                <input type="file" id="fileInputVisible" accept=".tex">
+            </div>
+            <div style="margin-top: 20px; display:none;"> {/* 通常は非表示 */}
+                <button id="testButton" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    ファイル選択をテスト
+                </button>
+            </div>
+
+            <div class="debug-info" id="debugInfo" style="display:none;"> {/* 通常は非表示 */}
+                デバッグ情報がここに表示されます...<br>
+            </div>
+
+            <div class="progress-bar" id="progressBar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div id="globalError" class="error-message" style="display:none;"></div>
+        </div>
+
+        <div class="results-section" id="resultsSection" style="display:none;">
+            <div class="loading" id="loadingAnimation">
+                <div class="spinner"></div>
+                <div>校正処理中...</div>
+            </div>
+            <div id="resultsDisplayArea">
+                {/* 結果はここに動的に挿入されます */}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function debugLog(message) {
+            console.log(message);
+            const debugInfo = document.getElementById('debugInfo');
+            // debugInfo.innerHTML += new Date().toLocaleTimeString() + ': ' + message + '<br>';
+            // debugInfo.scrollTop = debugInfo.scrollHeight;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            debugLog('ページが読み込まれました');
+            debugLog('ブラウザ: ' + navigator.userAgent);
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            debugLog('イベントリスナーを設定中...');
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInputHidden = document.getElementById('fileInputHidden');
+
+            if (!uploadArea || !fileInputHidden) {
+                debugLog('ERROR: 必要な要素 uploadArea または fileInputHidden が見つかりません');
+                return;
+            }
+
+            uploadArea.addEventListener('click', function(e) {
+                debugLog('uploadAreaがクリックされました');
+                fileInputHidden.click();
+            });
+
+            fileInputHidden.addEventListener('change', function(e) {
+                debugLog('隠しファイル入力でファイルが選択されました');
+                const file = e.target.files[0];
+                if (file) {
+                    debugLog('選択されたファイル: ' + file.name);
+                    processFile(file);
+                } else {
+                    debugLog('ファイルが選択されていません');
+                }
+                // 同じファイルを再度選択できるようにvalueをクリア
+                e.target.value = null;
+            });
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, () => uploadArea.classList.add('dragover'), false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, () => uploadArea.classList.remove('dragover'), false);
+            });
+
+            uploadArea.addEventListener('drop', function(e) {
+                debugLog('ファイルがドロップされました');
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                if (files.length > 0) {
+                    debugLog('ドロップされたファイル: ' + files[0].name);
+                    processFile(files[0]);
+                } else {
+                    debugLog('ドロップされたファイルがありません');
+                }
+            });
+            debugLog('すべてのイベントリスナーが設定されました');
+        }
+
+        async function processFile(file) {
+            debugLog('processFile関数が呼ばれました: ' + file.name);
+
+            const globalErrorDiv = document.getElementById('globalError');
+            globalErrorDiv.style.display = 'none'; // 前のエラーを隠す
+            globalErrorDiv.textContent = '';
+
+            if (!file.name.endsWith('.tex')) {
+                debugLog('ERROR: TeXファイルではありません');
+                globalErrorDiv.textContent = 'TeXファイル(.tex)のみ対応しています。';
+                globalErrorDiv.style.display = 'block';
+                return;
+            }
+
+            debugLog('TeXファイルであることを確認しました');
+
+            const progressBar = document.getElementById('progressBar');
+            const progressFill = document.getElementById('progressFill');
+            const resultsSection = document.getElementById('resultsSection');
+            const loadingAnimation = document.getElementById('loadingAnimation');
+            const resultsDisplayArea = document.getElementById('resultsDisplayArea');
+
+            progressBar.style.display = 'block';
+            progressFill.style.width = '0%';
+            resultsSection.style.display = 'block';
+            loadingAnimation.style.display = 'block';
+            resultsDisplayArea.innerHTML = ''; // 前回の結果をクリア
+
+            debugLog('UI要素を初期化・表示しました');
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            debugLog('FormDataを作成しました');
+
+            // ダミーのプログレス処理
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10;
+                if (progress <= 70) { // API通信中は70%まで進める
+                    progressFill.style.width = progress + '%';
+                } else {
+                    clearInterval(interval);
+                }
+            }, 100);
+
+            try {
+                debugLog('APIリクエストを送信中... URL: /proofread_english_paper/file');
+                const response = await fetch('/proofread_english_paper/file', {
+                    method: 'POST',
+                    body: formData
+                });
+                clearInterval(interval); // API応答があったらダミープログレスを停止
+                progressFill.style.width = '80%'; // API応答後
+
+                debugLog('レスポンスを受信: ' + response.status);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    debugLog('API ERROR Text: ' + errorText);
+                    let errorMessage = `校正処理に失敗しました (ステータス: ${response.status})`;
+                    try {
+                        const errorJson = JSON.parse(errorText);
+                        if (errorJson && errorJson.detail) {
+                            errorMessage += ` - ${errorJson.detail}`;
+                        } else if (errorJson && errorJson.message) {
+                           errorMessage += ` - ${errorJson.message}`;
+                        }
+                    } catch(e) {
+                        // JSONパース失敗時は元のテキストを使用
+                         if(errorText.length < 200) { // あまりに長いエラーテキストは詳細すぎる可能性
+                            errorMessage += ` - ${errorText}`;
+                        }
+                    }
+                    throw new Error(errorMessage);
+                }
+
+                const data = await response.json();
+                progressFill.style.width = '100%'; // データ処理開始
+                debugLog('データを受信: ' + JSON.stringify(data).substring(0, 200) + '...');
+
+                loadingAnimation.style.display = 'none'; // ローディングアニメーションを非表示
+                displayProofreadResults(data, resultsDisplayArea); // 結果表示関数を呼び出し
+
+                setTimeout(() => { // 少し遅れてプログレスバーを隠す
+                    progressBar.style.display = 'none';
+                    progressFill.style.width = '0%';
+                }, 1000);
+
+
+            } catch (error) {
+                clearInterval(interval);
+                debugLog('CATCH ERROR: ' + error.message);
+                console.error('Full error:', error);
+                globalErrorDiv.textContent = 'エラーが発生しました: ' + error.message;
+                globalErrorDiv.style.display = 'block';
+                resultsSection.style.display = 'none'; // エラー時は結果セクションを隠す
+                progressBar.style.display = 'none';
+                progressFill.style.width = '0%';
+            }
+        }
+
+        // HTML特殊文字をエスケープする関数
+        function escapeHtml(unsafe) {
+            if (typeof unsafe !== 'string') {
+                return unsafe === null || unsafe === undefined ? "" : String(unsafe);
+            }
+            return unsafe
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+        }
+
+        // 校正結果を表示する関数
+        function displayProofreadResults(results, container) {
+            if (!results || results.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#555;">校正の指摘事項は見つかりませんでした。</p>';
+                return;
+            }
+
+            let htmlContent = '<h2>校正結果 (' + results.length + '件の指摘)</h2>';
+
+            results.forEach((item, index) => {
+                htmlContent += `
+                    <div class="proofread-item">
+                        <h4>指摘箇所 ${index + 1}</h4>
+                        <div>
+                            <span class="label">校正前:</span>
+                            <pre>${escapeHtml(item.pre_proofread)}</pre>
+                        </div>
+                        <div>
+                            <span class="label">校正後:</span>
+                            <pre style="font-weight:bold; background-color: #e6f7ff;">${escapeHtml(item.post_proofread)}</pre>
+                        </div>
+                        <div>
+                            <span class="label">説明:</span>
+                            <pre style="background-color: #e9f7ef; font-style: italic;">${escapeHtml(item.description)}</pre>
+                        </div>
+                `;
+                // queries と knowledge は存在する場合のみ表示
+                if (item.queries) {
+                    const queriesText = Array.isArray(item.queries) ? item.queries.join('; ') : item.queries;
+                    htmlContent += `
+                        <div>
+                            <span class="label">関連クエリ:</span>
+                            <pre class="knowledge-text">${escapeHtml(queriesText)}</pre>
+                        </div>
+                    `;
+                }
+                if (item.knowledge) {
+                     // knowledgeが長文の場合、表示を一部制限するか、詳細表示のトグルを設けることを検討
+                    const knowledgeSnippet = String(item.knowledge).substring(0, 500) + (String(item.knowledge).length > 500 ? "..." : "");
+                    htmlContent += `
+                        <div>
+                            <span class="label">参照知識 (抜粋):</span>
+                            <pre class="knowledge-text">${escapeHtml(knowledgeSnippet)}</pre>
+                        </div>
+                    `;
+                }
+                htmlContent += `</div>`; // proofread-item の閉じタグ
+            });
+            container.innerHTML = htmlContent;
+        }
+
+    </script>
+</body>
+</html>

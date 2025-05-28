@@ -13,7 +13,10 @@ USER_PROMPT = """
 # 指示
 与えられるLaTeXのセクションから、どの項目が誤りで修正すべきかを示し、正しく修正してください。
 以下に、校正に役立つ知識を提供するので、そこで指摘されていることを忠実に守り、修正を行ってください。
-校正の根拠は、どの資料を参考にし構成したかを、資料の名前を明示して、書いてください。
+校正の根拠は、どの資料のナレッジを参考にし構成したかを、例に従って記述してください。
+
+# 校正根拠の詣式
+校正根拠の例：資料〇〇のナレッジ「◻︎◻︎」を参照
 
 # 校正前テキスト
 {section_content}
@@ -72,7 +75,7 @@ def proofread_section_by_knowledge(
     print("校正結果:", result.post_proofread)
     print("校正の根拠:", result.description)
 
-    return result
+    return result, knowledge_block
 
 
 def proofread_paper_by_knowledge(sections: List[str]) -> List[Dict[str, Any]]:
@@ -90,8 +93,17 @@ def proofread_paper_by_knowledge(sections: List[str]) -> List[Dict[str, Any]]:
     
     for section in sections:
         queries = create_queries_by_HyDE(section)
-        proofread_result = proofread_section_by_knowledge(section, queries)
-        proofread_sections.append(proofread_result)
+        print("生成されたクエリ:", queries)
+        proofread_result, knowledge = proofread_section_by_knowledge(section, queries)
+
+        proofread_section = {
+            "pre_proofread": proofread_result.pre_proofread,
+            "post_proofread": proofread_result.post_proofread,
+            "description": proofread_result.description,
+            "queries": queries,
+            "knowledge": knowledge
+        }
+        proofread_sections.append(proofread_section)
     
     return proofread_sections
 
