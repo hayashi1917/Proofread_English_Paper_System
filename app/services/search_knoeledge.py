@@ -14,3 +14,6 @@ def search_knowledge_from_vector_store_by_knowledge_type(query: str, knowledge_t
     knowledge_list = vector_store_service.get_knowledge_from_vector_store_by_knowledge_type(query, knowledge_type)
     return knowledge_list
 
+def delete_all_knowledge_from_vector_store():
+    result = vector_store_service.delete_all_knowledge_from_vector_store()
+    return result

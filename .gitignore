@@ -5,3 +5,4 @@ token.json
 __pycache__/
 chroma_db/
 .poetry.lock
+.DS_Store

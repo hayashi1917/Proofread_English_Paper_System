@@ -261,6 +261,10 @@ def split_tex_by_langchain(latex_string):
     chunks = splitter.split_text(latex_string)
     return chunks
 
+
+# Microsoft Graph API　のテスト
+
+
 def main():
     tex_file = "neurips_2024.tex"
 

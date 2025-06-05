@@ -45,3 +45,16 @@ class VectorStoreService:
     def get_knowledge_from_vector_store_by_knowledge_type(self, query: str, knowledge_type: str):
         results = self.chroma_client.similarity_search(query, filter={"knowledge_type": knowledge_type})
         return results
+    
+    def delete_all_knowledge_from_vector_store(self):
+        """
+        Chroma に永続化されている **すべてのベクトル／メタデータ** を削除する。
+        取り消し不可なので、必要なら事前にバックアップを取ること。
+        """
+
+        coll_name = self.chroma_client._collection.name      # 今のコレクション名を取得
+        self.chroma_client._client.delete_collection(coll_name)
+
+        self.chroma_client = ChromaDBClient().get_chroma_client()
+
+        return {"message": "全てのナレッジを削除しました"}
