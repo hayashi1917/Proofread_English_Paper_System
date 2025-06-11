@@ -28,7 +28,7 @@ class AzureOpenAIClient:
         # ★ 2) tools / tool_choice をその場で bind できるようにする
         self.client = ChatOpenAI(
             api_key=os.getenv("AZURE_OPENAI_KEY"),
-            model_name="gpt-4o-mini",
+            model_name="gpt-4.1-mini",
             temperature=0,
             max_completion_tokens=4096,
         )

@@ -1,15 +1,15 @@
 knowledge,issue_category,reference_url,knowledge_type
-AAAIが著者から提供された電子ソースから直接、会議録、作業ノート、技術報告を作成すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
-出版物のすべての論文が均一な外観を持つために、著者は指示に従う必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
-Microsoft Wordを使用している場合は、別の文書に指示が提供されること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
-他のフォーマットソフトウェアを使用する場合は、事前にAAAI Pressから許可を得る必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
-これらの指示は、経験豊富なLaTeXユーザー向けの一般的なガイドであること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+AAAIが著者から提供された電子ソースから直接、会議録、作業ノート、技術報告を作成すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット  ##情報不足
+出版物のすべての論文が均一な外観を持つために、著者は指示に従う必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　##ナレッジではない
+Microsoft Wordを使用している場合は、別の文書に指示が提供されること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　　##ナレッジではない
+他のフォーマットソフトウェアを使用する場合は、事前にAAAI Pressから許可を得る必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　　　##ナレッジではない
+これらの指示は、経験豊富なLaTeXユーザー向けの一般的なガイドであること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　　
 経験のないLaTeXユーザーは、論文のフォーマットに使用しないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
-AAAIはサポートを提供できず、付随するスタイルファイルは動作することが保証されていないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
-得られた結果が仕様に従っていない場合は、ソースファイルを修正する必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+AAAIはサポートを提供できず、付随するスタイルファイルは動作することが保証されていないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　　##ナレッジではない
+得られた結果が仕様に従っていない場合は、ソースファイルを修正する必要があること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　　##ナレッジではない
 最新のAAAI Press LaTeXマクロの使用,['形式'],Copy of AAAI-format.tex,学会フォーマット
-著者キットのダウンロード,['形式'],Copy of AAAI-format.tex,学会フォーマット
-著作権フォームの記入、署名、期限内の返送,['形式'],Copy of AAAI-format.tex,学会フォーマット
+著者キットのダウンロード,['形式'],Copy of AAAI-format.tex,学会フォーマット　　##情報不足
+著作権フォームの記入、署名、期限内の返送,['形式'],Copy of AAAI-format.tex,学会フォーマット　　
 論文のソースとPDFを著者向けのフォーマット指示に従って整形,['形式'],Copy of AAAI-format.tex,学会フォーマット
 電子ファイルと要旨を期限内に電子提出フォームを使用して提出,['形式'],Copy of AAAI-format.tex,学会フォーマット
 著作権フォームや必要なページまたはフォーマット料金をAAAI Pressに期限内に送付,['形式'],Copy of AAAI-format.tex,学会フォーマット

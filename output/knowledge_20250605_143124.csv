@@ -1,0 +1,66 @@
+knowledge,issue_category,reference_url,knowledge_type
+著作権フォームの提出が必須,['段落構成'],Copy of AAAI-format.tex,学会フォーマット 　## 校正と関係なし
+著作権フォームは原本を郵送する必要がある,['段落構成'],Copy of AAAI-format.tex,学会フォーマット 　## 校正と関係なし
+締切に間に合わせるために著作権フォームをFAXまたはスキャンしてメール送信可能,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+署名された著作権フォームがない場合、論文は出版されない,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+PDFファイルはPDFLaTeXでコンパイルすること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+PDFファイルにすべてのフォントを埋め込むこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+スタイルシートの変更は禁止,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+タイプ3フォントの使用禁止,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+タイトルは米国の大文字ルールに従うこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット #情報不足
+TimesまたはNimbusフォントパッケージを使用すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+LaTeX 209文書の使用禁止,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+非英語言語サポートが必要なフォントはアウトラインに変換するか削除すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+AAAIスタイルの二段組形式を使用すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+最終提出用の用紙サイズはUSレターであること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット 　## 校正と関係なし
+PDFファイルを提出すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット 　## 校正と関係なし
+単一の.texファイルとしてLaTeXソースを提出すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　## 校正と関係なし
+各セクションを単一のソースファイルに含めること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　　## 校正と関係なし
+文献リストは別ファイルとして含めることができる,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　
+すべてのグラフィックファイルを提出すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　　## 校正と関係なし
+LaTeX生成ファイル（.auxや.bibファイルなど）を提出すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　　## 校正と関係なし
+非標準スタイルファイルを提出すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+ソースファイルはすべてのテキスト、文献、カスタムマクロを含むこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+PDFとソースファイルを単一の圧縮アーカイブにまとめること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+ファイル名は姓で命名すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+フォントサイズは10ポイントに設定,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+タイトルは16ポイントの太字で中央揃え,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+著者名は12ポイントで中央揃え,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+アブストラクトは200語以内に制限,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+引用は著者名と年を記載,['文法'],Copy of AAAI-format.tex,学会フォーマット
+ページ番号は印刷しない,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+"図は.jpg, .png, .pdf形式で挿入",['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+図のキャプションは図の下に配置,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+図のフォントは9ポイント以上に設定,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+文書は二段組で印刷,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+タイプ1フォントの使用,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+タイプ3フォントの使用禁止,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+標準のTimes、Nimbus、CMRフォントパッケージの使用,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+PDF作成時にすべてのフォントを埋め込む,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+[T1]{fontenc}パッケージの使用禁止,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+PDF	extbackslash LaTeX{}を使用してPDF文書を作成することが必要,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+dvipdfスクリプトの使用禁止,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+dvipdfmパッケージの使用禁止,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+Ghostscriptを使用してPDFを作成しないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+インポートしたグラフィックファイルのフォント問題を確認すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+ページサイズをA4に設定,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+タイプ3フォントの使用禁止,['文法'],Copy of AAAI-format.tex,学会フォーマット
+すべてのフォントを埋め込むこと,['文法'],Copy of AAAI-format.tex,学会フォーマット
+数式や図が余白にかからないようにする,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+すべての図を含めること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+タイトルの混合ケースキャピタリゼーションルールに従うこと,['文法'],Copy of AAAI-format.tex,学会フォーマット
+著作権表示を含めること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+URLを下線付きで色付きにすること,['文法'],Copy of AAAI-format.tex,学会フォーマット
+ファイルのフォーマットが不適切な場合、論文が出版されない可能性がある,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+LaTeX 209を使用しないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+論文はLaTeX 2eに変換すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+電子ファイルの名前は姓で設定すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+一般的または解読不可能な名前の使用を避けること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+著者登録と提出手順を確認すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　##情報不足
+論文提出は二段階のプロセスであること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+論文はシンプルに保つこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　## 情報不足
+複雑なマクロやスタイルファイルの使用禁止,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+参考文献は著者名と年を記載,['文法'],Copy of AAAI-format.tex,学会フォーマット
+文書の内容が明確であることを確認,['文法'],Copy of AAAI-format.tex,学会フォーマット
+謝辞セクションは必要ない,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+著者名や貢献者の詳細は省略する,['段落構成'],Copy of AAAI-format.tex,学会フォーマット

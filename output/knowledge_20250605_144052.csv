@@ -1,0 +1,49 @@
+knowledge,issue_category,reference_url,knowledge_type
+署名済みの著作権フォームの提出は論文出版の必須条件,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　
+PDFファイルにすべてのフォントを埋め込むこと（図も含む）,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイプ3フォントの使用禁止（図を含む）,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイトルは米国式の大文字ルールに従うこと,['文法'],Copy of AAAI-format.tex,学会フォーマット
+本文のフォントはTimesまたはNimbusを使用し、Computer Modernは使用禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+LaTeX 209形式の文書は使用禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+非英語言語サポート用フォント（CIDおよびIdentity-H）はアウトライン化または削除すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+論文はAAAIスタイルの2段組み形式で作成すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+最終提出用の用紙サイズはUSレターに固定（例外なし）,['形式'],Copy of AAAI-format.tex,学会フォーマット
+ソースファイルとPDFファイルの内容は完全に一致させること,['形式'],Copy of AAAI-format.tex,学会フォーマット　
+文書の余白は指定されたフォーマット指示に従うこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット　
+単一の.texファイルに全ての本文セクションを含めること（bibliographyは例外）,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+LaTeXソースは標準的なLaTeX環境でコンパイル可能であること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+aaai.styパッケージを使用して論文をTimesフォントでフォーマットすること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+セクション番号は0（なし）、1（セクション番号）、2（セクションとサブセクション番号）のいずれかに設定し、3以上は使用しないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFメタデータに論文タイトルと著者名を必ずASCII文字で記載し、LaTeXコードやアクセント文字を含めないこと,"['形式', '文法']",Copy of AAAI-format.tex,学会フォーマット
+論文はUSレターサイズ（8.5 x 11インチ）で、上下左右のマージンはそれぞれ0.75インチ（下は1.25インチ）に設定すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+論文は2カラム形式で、各カラム幅は3.3インチ、カラム間の余白は0.375インチとすること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+geometryパッケージは使用禁止で、ページサイズやマージンの変更に用いないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+長すぎる論文は\frenchspacingを使用してピリオド後のスペースを詰め、図のサイズを縮小し、\centeringを図環境で使用すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+ページレイアウトを変更するコマンド（\columnsep、\topmargin、\textheight、\textwidth、\oddsidemargin、\evensidemarginなど）は使用禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+図のファイル形式は.jpg、.png、.pdfのみ許可し、.gif、.ps、.epsは使用禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+図はLaTeX外でトリミングし、\includegraphicsのclipやviewportオプションでのトリミングは不可,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイプ1フォントの使用必須、タイプ3フォントの使用禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+標準のTimes、Nimbus、CMRフォントパッケージのみ使用可能、特殊なフォントや特定ポイントサイズ用フォントの使用禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDF作成時にすべてのフォントを埋め込むこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+fontencパッケージの[T1]オプションは使用禁止、代わりにCMスーパーフォントパッケージを使用すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDF作成にはPDFLaTeXを使用し、直接PDFを生成すること,['形式'],Copy of AAAI-format.tex,学会フォーマット　
+PDFLaTeX使用時はすべての画像・グラフィックをPDFLaTeXが対応する形式（通常PDF）で用意すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+dvipdfスクリプトの使用禁止、特にPostScript中間処理を回避する方法としての使用は不可,['形式'],Copy of AAAI-format.tex,学会フォーマット
+dvipdfmパッケージの使用禁止、特にグラフィックを含む文書では絶対に使用しないこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+Ghostscriptを用いてPDFを作成することは禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDF内にタイプ3フォントが含まれる場合は、挿入したグラフィックファイルのフォント設定を確認し、タイプ3フォントを含まないようにすること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+PDFのページサイズはA4に設定すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+タイプ3フォント、Identity-Hフォント、CIDフォントの使用禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+すべてのフォントはPDFに埋め込むこと,['形式'],Copy of AAAI-format.tex,学会フォーマット
+数式や図がページの余白にかからないように配置すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+タイトルは混合大小文字のルールに従うこと,['文法'],Copy of AAAI-format.tex,学会フォーマット
+図や数式などのグラフィックはページ内で適切に表示され、描画が遅くならないようにすること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+URLは下線付きかつカラー表示にすること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+LaTeX 209の使用禁止,['形式'],Copy of AAAI-format.tex,学会フォーマット
+LaTeXファイルはLaTeX2eに変換すること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+論文のLaTeXソースファイル名は著者の姓（ファミリーネーム）を用いること,['形式'],Copy of AAAI-format.tex,学会フォーマット
+論文提出は二段階のプロセスであることの説明は校正指示に含めないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+論文はシンプルに保ち、複雑なマクロやスタイルファイルを使用しないこと,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+論文中の追加リソースや参考文献は明確にセクション分けすること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+謝辞セクションは論文の体裁に直接影響しないため省略すること,['段落構成'],Copy of AAAI-format.tex,学会フォーマット
+文中の著者や貢献者への感謝表現は校正対象外とすること,['文法'],Copy of AAAI-format.tex,学会フォーマット 
