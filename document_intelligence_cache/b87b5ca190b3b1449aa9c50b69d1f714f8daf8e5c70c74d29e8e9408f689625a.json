@@ -1,0 +1,12 @@
+{
+  "file_name": "19900017394-ページ-12.pdf",
+  "file_hash": "b87b5ca190b3b1449aa9c50b69d1f714f8daf8e5c70c74d29e8e9408f689625a",
+  "processed_at": "2025-06-12T16:38:59.807233",
+  "pages_content": [
+    {
+      "page_number": 1,
+      "content": "Section 1.3. Pronouns\nIn fact, the use of 's on an inanimate object is no longer taboo,\nparticularly if the object has some lifelike qualities (Bernstein 1981):\ncomputer program's name\nEarth's rotation\nWhether an 's can properly be added to an inanimate noun seems to\nbe a matter of idiom. We would not say, for example,\nsystems' analyst\ntable's top\n1.3. Pronouns\nAll pronouns must have an antecedent (the noun they replace) with which\nthey agree in number, gender, and person. In addition, some pronouns\nchange form to indicate nominative, objective, and possessive case (for\nexample, he, him, his).\n. An apostrophe is never used to form possessive case pronouns.\n1.3.1. Antecedents\nMost grammatical errors involving pronouns result from the lack of a clear\nantecedent. The following sentences suffer from this problem:\nHe foresaw aircraft applications and thus emphasized rectilinear motions.\nThis causes complicated integral equations for other types of motion.\nThe boundary condition becomes a source term, which permits use of the\nGreen function.\nRequired surface pressures are obtained in several ways, for example,\nfrom blade element theory or experimental measurements. Whatever the\ntechnique, it is usually available.\nIn the first two sentences the pronouns this and which refer to the idea of\nthe previous sentence or clause and do not have a noun antecedent. The\nWriter's Guide and Index to English (Ebbitt and Ebbitt 1978) states that\nthis \"broad reference\" usage of pronouns is acceptable in \"general\" writing,\nbut should be avoided in \"formal\" writing. The danger of broad reference\nis that the antecedent (whether a noun or a clause) may not be clear. In\nthe second sentence above, which appears to refer to term. The following\nrevisions would be preferable:\nHe foresaw aircraft applications and thus emphasized rectilinear motion.\nThis emphasis causes complicated integral equations for other types of\nmotion.\nBecause the boundary condition becomes a source term, the Green\nfunction can be used.\nIn the third sentence, it is much too distant from its antecedent, pressures.\nBecause of this distance, the pronoun does not agree in number with its\nantecedent.\n3\n-",
+      "source_file": "19900017394-ページ-12.pdf"
+    }
+  ]
+}

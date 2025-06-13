@@ -1,0 +1,12 @@
+{
+  "file_name": "19900017394-ページ-92.pdf",
+  "file_hash": "1a6a3f96b1b1930bdd5c2903e8dca71fc014f79293e21cd74b502a5121b5a7f0",
+  "processed_at": "2025-06-12T16:40:24.704597",
+  "pages_content": [
+    {
+      "page_number": 1,
+      "content": "Section 4.2. Sentence Style Capitalization\nCongress established the NACA in 1915 \"to supervise and direct the\nscientific study of the problems of flight with a view to their practical\nsolution.\"\nWhen ellipsis points in a quotation follow a period (that is, four dots), the\nfirst word of the sentence following the ellipsis may be capitalized, even if\nit is not capital in the source:\n\"The airplane then accelerated to a Mach number of 0.98.\nThe needle\nof the Mach meter took an abrupt jump past M = 1.0.\"\n4.2.3. Questions\nWhen a direct question occurs within a sentence, the author may or may\nnot choose to capitalize the first word of the question:\nCorrect\nThe question addressed by this research project is,\nWhat system identification procedure should be used\nfor a statically unstable aircraft?\nEqually\nThe question addressed by this research project is, what\ncorrect\nsystem identification procedure should be used for a\nstatically unstable aircraft?\nOf course, an indirect question is never capitalized:\nThis research project addresses what system identification procedure\nshould be used for statically unstable aircraft.\n4.2.4. Lists\nItems in a displayed list should begin with a capital whether they are\ncomplete sentences or not:\nThe purposes of this report are\n1. To evaluate the performance of the instruments\n2. To expand the data base\nWe can define the requirements of the power converter as follows:\n1. Energy conversion should be high.\n2. Efficiency should be independent of laser wavelength.\nSupport systems for the facility supply the following:\n1. Air-The 600-psi system can deliver a flow rate of 300 lb/sec for\n3 min.\n2. Cooling water-The closed-loop system delivers 450 gal/min at\n550 psig.\n3. Gaseous propellants-Hydrogen, oxygen, and nitrogen are supplied\nfrom 60 000-ft3 tube trailers at 2400 psia.\nSkillin et al. (1974) indicate that capitalizing nonsentence displayed items\nis optional, but we prefer the capitals. When lists are not displayed, the\nitems are, of course, not capitalized:\nThe purposes of this report are (1) to evaluate the performance of the\ninstruments and (2) to expand the data base.\n83",
+      "source_file": "19900017394-ページ-92.pdf"
+    }
+  ]
+}

@@ -68,7 +68,7 @@ def structure_tex_to_knowledge(chunks: List[Dict[str, Any]]) -> KnowledgeFromLat
             per_chunk: list[KnowledgeFromLatex] = []
             
             for result in results.knowledge_list:   
-                result.knowledge_type = knowledge_type
+                result.knowledge_type = knowledge_type.strip() if knowledge_type else None
                 result.reference_url = document_name
                 print("--------------------------------")
                 print("result:")

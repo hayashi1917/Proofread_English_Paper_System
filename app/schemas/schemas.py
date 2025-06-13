@@ -1,5 +1,5 @@
 from typing import Optional, Literal, List
-from pydantic import BaseModel, Field, constr, conlist
+from pydantic import BaseModel, Field, constr, conlist, field_validator
 
 class AnalyzeDocumentResponse_PrebuiltLayout(BaseModel):
     content: str
@@ -17,7 +17,15 @@ class KnowledgeFromLatex(BaseModel):
         Literal["段落構成", "文法", "単語", "形式"], min_length=1, max_length=2) = Field(..., description="問題カテゴリ")
 
     reference_url: Optional[str] = Field(description="参考URL／ファイルパスなど")
-    knowledge_type: Optional[Literal["学会フォーマット", "一般的な論文", "論文指導"]] = Field(description="ナレッジのタイプ")
+    knowledge_type: Optional[Literal["学会フォーマット", "一般的な論文", "論文指導", "PDF文書"]] = Field(description="ナレッジのタイプ")
+    
+    @field_validator('knowledge_type')
+    @classmethod
+    def normalize_knowledge_type(cls, v):
+        if v is not None:
+            # 前後の空白文字（全角・半角）を除去
+            return v.strip().strip('\u3000')
+        return v
 
 
 class KnowledgeFromLatexList(BaseModel):

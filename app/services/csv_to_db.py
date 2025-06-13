@@ -13,7 +13,6 @@ def csv_to_db(csv_file_name: str):
     # 3. プロジェクトのルートディレクトリを基準にCSVファイルのパスを構築
     #    この例では、your_script.py から見て2つ上の階層がプロジェクトルートだと仮定
     project_root_dir = script_dir.parent.parent
-    csv_file_name = 'knowledge_20250521_164115.csv' # ファイル名は固定または動的に生成
     csv_path = project_root_dir / 'output' / csv_file_name
     df = pd.read_csv(csv_path)
     print(df)

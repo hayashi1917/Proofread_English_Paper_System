@@ -1,0 +1,12 @@
+{
+  "file_name": "19900017394-ページ-58.pdf",
+  "file_hash": "6834fab638f1b3a355ea204f5d975b6cb238fa955e8daa13baa84e2a23a34eb9",
+  "processed_at": "2025-06-12T16:35:46.918760",
+  "pages_content": [
+    {
+      "page_number": 1,
+      "content": "Section 3.4. Colon\nNor should a colon be used after such introductory phases as that is, for\nexample, and such as (the colon replaces them):\nWrong\nMicrowave instruments are used for remote sensing of\nenvironmental variables such as: sea ice, soil moisture,\nand surface wind speed.\nEither\nMicrowave instruments are used for remote sensing of\nenvironmental variables, such as sea ice, soil moisture,\nand surface wind speed.\nOr\nMicrowave instruments are used for remote sensing of\nenvironmental variables: sea ice, soil moisture, and\nsurface wind speed.\n. When items of a list are numbered, the numbers do not affect the punctu-\nation:\nThe quantities calculated from microwave instruments are (1) radiometer\nwind speed, (2) radiometer rain rate, and (3) scatterometer wind vector.\nRemember that the colon has strong separating force; do not use it where\nseparation is not grammatically desirable.\nWhen using a colon incorrectly, an author probably wants to emphasize\nthe material that follows. The editor should consider a correction that\npreserves this emphasis, for example, itemization (see section 2.6) or correct\nuse of the colon.\nLists\nA colon is an elegant way of introducing a list and at the same time\nemphasizing the elements of the list (by separating them from the rest of\nthe sentence). Such lists might consist of words, phrases (prepositional,\ninfinitive, or noun), or even clauses.\n· Use a colon to introduce a list in apposition to a noun:\nThe scatterometer is separated into three assemblies: a gimbal, a\ntransmitter-receiver assembly, and rack-mounted electronics.\n· Use a colon to introduce a list whose introductory statement contains the\nwords as follows or the following:\nThe rack-mounted electronics consist of the following: power supplies,\nthe gimbal controller, ...\n. Use a colon to introduce a list that amplifies an introductory sentence:\nThe purpose of this report is twofold: to evaluate the performance of the\ninstruments and to expand the data base.\n49",
+      "source_file": "19900017394-ページ-58.pdf"
+    }
+  ]
+}

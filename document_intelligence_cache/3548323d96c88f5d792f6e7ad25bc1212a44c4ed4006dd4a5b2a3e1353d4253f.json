@@ -1,0 +1,12 @@
+{
+  "file_name": "19900017394-ページ-13.pdf",
+  "file_hash": "3548323d96c88f5d792f6e7ad25bc1212a44c4ed4006dd4a5b2a3e1353d4253f",
+  "processed_at": "2025-06-12T16:41:08.938032",
+  "pages_content": [
+    {
+      "page_number": 1,
+      "content": "Chapter 1. Grammar\nBernstein (1981) discusses ambiguous or nonexistent antecedents under\n\"Pronouns\" and under particular words, for example, \"Each\" and \"None.\"\n· Grammatical errors involving pronoun antecedents can be avoided very\nsimply: check every pronoun for a clear, appropriate antecedent and then\nensure agreement between antecedent and pronoun.\n1.3.2. Personal\nPronouns\nFirst person pronouns\nTichy and Fourdrinier (1988) attribute the pervasiveness of passive\nvoice in technical writing to evasion of first person pronouns (I, we). In the\nearly 1900's, first person pronouns were banished from technical writing to\nobtain objectivity; however, Tichy and Fourdrinier effectively demonstrate\nthat objectivity is not always attained. Writing authorities no longer forbid,\nand sometimes encourage, the use of first person pronouns (CBE 1978; AIP\n1978; Houp and Pearsall 1984; and Mills and Walter 1978). Thus, we in\ntechnical documents cannot be condemned, particularly when the opinion\nof the author (and a research staff) is being expressed:\nWe believe that this effect is due to nozzle aspect ratio.\nThis use of we, meaning \"I and others,\" should be distinguished from\nthe editorial we, meaning \"you readers and I\" (Ebbitt and Ebbitt 1982).\nIn technical documents the editorial we is often used in mathematical\npresentations:\nNow we define a recursive relation for the (k + 1)th iteration:\nPk+1 = (X{X})-1\nTichy and Fourdrinier (1988) recommend that the antecedent of we always\nbe made clear. They also offer advice on when to use first person pronouns\nand when not to.\nGender\nThird person singular pronouns change form to indicate gender (he,\nshe). When the pronoun could refer to either sex or when the antecedent's\nsex is unknown, the masculine pronoun is grammatical. However, in recent\nyears, objections have been raised to this grammatical rule.\n. It is preferred practice to avoid the masculine pronoun when the antecedent\nmay be feminine. Often the antecedent can be made plural:\nPoor\nAn editor must have guidelines on which to base his\nrevisions.\nBetter\nEditors must have guidelines on which to base their\nrevisions.\n4",
+      "source_file": "19900017394-ページ-13.pdf"
+    }
+  ]
+}

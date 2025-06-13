@@ -1,0 +1,12 @@
+{
+  "file_name": "19900017394-ページ-16.pdf",
+  "file_hash": "f54fdf617375d4ab962ef8cc772cd5c249632fee5d360416934fa56bfabaea23",
+  "processed_at": "2025-06-12T16:50:02.465471",
+  "pages_content": [
+    {
+      "page_number": 1,
+      "content": "Section 1.3. Pronouns\n1.3.4. Demonstrative\nPronouns\nDemonstrative pronouns refer to something present or near (this, these) or\nto something more remote (that, those). Technical writing tends to exhibit\ntwo types of problems involving demonstrative pronouns: broad reference\n(see section 2.2.1) and incomplete comparison (see section 2.5.2).\nBroad reference\nThe demonstrative this is often used to refer to the idea expressed in\nthe previous sentence, a practice to be avoided in formal writing (Ebbitt\nand Ebbitt 1982). For example,\nThe entire noise prediction methodology for moving bodies becomes\nautonomous. This means that improved models can be incorporated\nsimultaneously in pressure and noise calculations.\nMost loads could be reduced 0.8 percent if voltage was more closely\nregulated. Nonessential loads such as payloads could take advantage of\nthis, but essential loads could not.\nThis type of construction is sometimes vague and usually unnecessary. Often\nthe demonstrative pronoun can be deleted:\nThe entire noise prediction methodology for moving bodies becomes\nautonomous. Thus, improved models can be incorporated simultaneously\nin pressure and noise calculations.\nOr the antecedent can be clarified:\nMost loads could be reduced 0.8 percent if voltage was more closely\nregulated. Nonessential loads such as payloads could take advantage of\nvoltage regulation, but essential loads could not.\nIncomplete comparison\nDemonstrative pronouns can often be used to complete vague compar-\nisons:\nPoor\nThe errors in this prediction are greater than in ta-\nble III.\nBetter\nThe errors in this prediction are greater than those in\ntable III.\nBut make sure that the antecedent and meaning are clear:\nUnclear\nWest's results were in better agreement with ours than\nthose of Long et al.\nEither\nWest's results were in better agreement with ours than\nwere those of Long et al.\nOr\nWest's results were in better agreement with ours than\nwith those of Long et al.\nSee section 2.5 for further discussion of comparisons.\n7",
+      "source_file": "19900017394-ページ-16.pdf"
+    }
+  ]
+}
