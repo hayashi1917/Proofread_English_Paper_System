@@ -1,5 +1,5 @@
 from fastapi import APIRouter, UploadFile, File
-from app.services.analyze_document_process import analyze_document_process, structure_markdown
+from app.services.proofreading.analyze_document_process import analyze_document_process, structure_markdown
 
 router = APIRouter(
     prefix="/analyze_document",

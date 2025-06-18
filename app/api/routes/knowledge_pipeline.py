@@ -1,5 +1,5 @@
 from fastapi import APIRouter, UploadFile, File
-from app.services.execute_knowledge_pipeline import execute_knowledge_pipeline_batch, execute_knowledge_pipeline_from_pdf_batch
+from app.services.knowledge.execute_knowledge_pipeline import execute_knowledge_pipeline_batch, execute_knowledge_pipeline_from_pdf_batch
 from libs.azure_client import AzureDocumentIntelligenceClient
 
 router = APIRouter(

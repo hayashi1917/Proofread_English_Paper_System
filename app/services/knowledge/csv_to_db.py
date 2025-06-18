@@ -1,5 +1,5 @@
-from app.services.execute_knowledge_pipeline import KnowledgeFromLatex
-from app.services.utils.vector_store_service import VectorStoreService
+from app.services.knowledge.execute_knowledge_pipeline import KnowledgeFromLatex
+from app.services.knowledge.utils.vector_store_service import VectorStoreService
 from pathlib import Path
 import pandas as pd
 import ast

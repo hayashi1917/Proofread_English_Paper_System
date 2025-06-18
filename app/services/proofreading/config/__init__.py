@@ -1,0 +1,1 @@
+"""Proofreading pipeline configuration settings."""

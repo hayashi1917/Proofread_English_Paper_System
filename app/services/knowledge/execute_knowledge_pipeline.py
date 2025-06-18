@@ -1,9 +1,9 @@
 from app.schemas.schemas import KnowledgeFromLatexList, KnowledgeFromLatex
-from app.services.access_google_drive import download_knowledge_tex_files, download_knowledge_pdf_files
-from app.services.chunking_file import chunking_tex_files
-from app.services.structure_tex_to_knowledge import structure_tex_to_knowledge
-from app.services.structure_pdf_to_knowledge import structure_pdf_files_to_knowledge
-from app.services.utils.vector_store_service import VectorStoreService
+from app.services.knowledge.access_google_drive import download_knowledge_tex_files, download_knowledge_pdf_files
+from app.services.knowledge.chunking_file import chunking_tex_files
+from app.services.knowledge.structure_tex_to_knowledge import structure_tex_to_knowledge
+from app.services.knowledge.structure_pdf_to_knowledge import structure_pdf_files_to_knowledge
+from app.services.knowledge.utils.vector_store_service import VectorStoreService
 from pathlib import Path
 from dotenv import load_dotenv
 import csv

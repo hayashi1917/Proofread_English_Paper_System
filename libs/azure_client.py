@@ -9,7 +9,7 @@ from langchain.tools import BaseTool
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
-from app.services.utils.document_intelligence_cache import DocumentIntelligenceCache
+from app.services.knowledge.utils.document_intelligence_cache import DocumentIntelligenceCache
 
 load_dotenv(".env.local")
 

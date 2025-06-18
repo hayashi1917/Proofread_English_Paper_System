@@ -1,13 +1,10 @@
-from libs.azure_client import AzureDocumentIntelligenceClient, AzureOpenAIClient
-from langchain_core.prompts import ChatPromptTemplate
-from app.schemas.schemas import KnowledgeFromLatexList, KnowledgeFromLatex
-import typing
-from typing import List, Dict, Any
-import json
+"""
+PDF知識抽出用のプロンプトテンプレート
+"""
 
 SYSTEM_PROMPT = """
 あなたは学術ドキュメントのフォーマットと英文校正に関する専門家です。
-あなたの主な目的は、入力された LaTeX テキストから、論文執筆者が論文の**内容や体裁の質（＝校正）を向上させ、学会フォーマットに適合させるために直接的に行動に移せる、具体的かつ実行可能な指示・ルール・仕様のみ**を「ナレッジ単位」で抽出し、JSON 配列として出力することです。
+あなたの主な目的は、入力されたPDFページから、論文執筆者が論文の**内容や体裁の質（＝校正）を向上させ、学会フォーマットに適合させるために直接的に行動に移せる、具体的かつ実行可能な指示・ルール・仕様のみ**を「ナレッジ単位」で抽出し、JSON 配列として出力することです。
 各ナレッジは、それ単体で意味が通じるように、具体的で簡潔な体言止めで記述してください。
 """
 
@@ -21,7 +18,7 @@ USER_PROMPT = """
     - 参考文献や引用の具体的なスタイル指示 (例: 「引用は著者名と年を記載」)
     - 図表のキャプション、解像度、配置など、論文内での見た目や内容の表現に関する指示 (例: 「図のキャプションは図の下に配置」)
 
-- *それ抽出対象外 (校正に関係ない、またはナレッジではないもの)**:
+- **抽出対象外 (校正に関係ない、またはナレッジではないもの)**:
     - **提出手続きやファイル管理に関する指示**: (例: 「PDFファイルを提出すること」「単一の.texファイルとしてLaTeXソースを提出すること」「ファイル名は姓で命名すること」「ソースファイルを圧縮して提出」)
     - **出版の可否条件や事務的なプロセス、著者登録に関する情報**: (例: 「署名された著作権フォームがない場合、論文は出版されない」「論文提出は二段階のプロセスであること」「著者登録と提出手順を確認すること」)
     - 背景情報、単なる理由説明 (例: 「均一な外観のため指示に従う必要性」)
@@ -40,49 +37,6 @@ USER_PROMPT = """
 * LaTeX コマンドや数式は、その指示内容が論文の体裁や内容にどう影響するかを日本語で平易に表現するか、指示内容に直接関わらない場合は除去する。
 * 内容が実質的に同一のナレッジは重複して抽出しない。意味や指示内容が同じであれば、表現が多少異なっていても重複とみなす。
 
-# 入力資料（LaTeX）
+# 入力資料（PDFページ内容）
 {content}
 """
-
-
-def structure_tex_to_knowledge(chunks: List[Dict[str, Any]]) -> KnowledgeFromLatexList:
-    aggregated: list[KnowledgeFromLatex] = []
-    azure_openai_client = AzureOpenAIClient()
-    for document in chunks:
-        document_name = document["name"]
-        knowledge_type = document["knowledge_type"]
-        
-        for chunk in document["chunks"]:
-            per_chunk: list[KnowledgeFromLatex] = []
-            prompt = ChatPromptTemplate.from_messages([
-                ("system", SYSTEM_PROMPT),
-                ("user", USER_PROMPT),
-            ])
-            chain = prompt | azure_openai_client.get_openai_client().with_structured_output(KnowledgeFromLatexList)
-            chunk_text = chunk["chunk_text"]
-            print("--------------------------------")
-            print("chunk_text:")
-            print(chunk_text)
-            print("--------------------------------")
-            results = chain.invoke({"content": chunk_text})
-            per_chunk: list[KnowledgeFromLatex] = []
-            
-            for result in results.knowledge_list:   
-                result.knowledge_type = knowledge_type.strip() if knowledge_type else None
-                result.reference_url = document_name
-                print("--------------------------------")
-                print("result:")
-                print(result)
-                print("--------------------------------")
-                per_chunk.append(result)
-
-            aggregated.extend(per_chunk)
-
-    
-    return aggregated
-
-
-
-
-
-
