@@ -3,7 +3,7 @@
 """
 
 # ベクターストア検索設定
-KNOWLEDGE_SEARCH_TOP_K = 3
+KNOWLEDGE_SEARCH_TOP_K = 1
 
 # ログ出力設定
 ENABLE_DEBUG_LOGGING = True

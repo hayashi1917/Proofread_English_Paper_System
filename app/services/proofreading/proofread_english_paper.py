@@ -7,6 +7,7 @@ Google DriveやアップロードされたLaTeX文書を校正し、
 from typing import List, Dict, Any
 
 from app.services.proofreading.core.proofreading_paper_engine import ProofreadingPaperEngine
+from app.services.proofreading.config.proofreading_paper_config import SplitMode
 from app.services.shared.logging_utils import log_proofreading_info
 from app.services.shared.exceptions import ProofreadingError
 
@@ -101,7 +102,8 @@ class EnglishPaperProofreadingService:
         self, 
         tex_file: str = None,
         use_google_drive: bool = False,
-        use_knowledge: bool = True
+        use_knowledge: bool = True,
+        split_mode: str = SplitMode.SECTION
     ) -> List[Dict[str, Any]]:
         """
         オプション指定による柔軟な校正実行
@@ -110,6 +112,7 @@ class EnglishPaperProofreadingService:
             tex_file (str, optional): LaTeXファイル内容（Google Drive使用時は不要）
             use_google_drive (bool): Google Driveからファイル取得するかどうか
             use_knowledge (bool): 知識ベースを使用するかどうか
+            split_mode (str): 分割モード
             
         Returns:
             List[Dict[str, Any]]: 校正結果のリスト
@@ -125,7 +128,7 @@ class EnglishPaperProofreadingService:
             else:
                 if not tex_file:
                     raise ProofreadingError("アップロードファイル使用時はtex_fileが必要です")
-                return self.proofread_uploaded_file(tex_file, use_knowledge)
+                return self.engine.proofread_uploaded_file(tex_file, use_knowledge, split_mode)
         except Exception as e:
             raise ProofreadingError(f"オプション指定校正中にエラーが発生しました: {e}")
 

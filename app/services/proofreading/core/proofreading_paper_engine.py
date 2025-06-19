@@ -5,7 +5,7 @@ import os
 from typing import List, Dict, Any
 
 from app.services.knowledge.access_google_drive import download_pre_proofread_tex_file
-from app.services.knowledge.chunking_file import chunking_tex_file
+from app.services.knowledge.chunking_file import chunking_tex_file, split_latex_by_command, split_latex_by_sentence, split_latex_by_hybrid, split_latex_by_recursive_nlp
 from app.services.proofreading.proofread_paper_by_knowledge import (
     proofread_paper_by_knowledge,
     proofread_paper_without_knowledge
@@ -15,7 +15,8 @@ from app.services.proofreading.config.proofreading_paper_config import (
     ENGLISH_PAPER_FOLDER_ID_KEY,
     MIN_TEX_FILE_SIZE,
     MAX_TEX_FILE_SIZE,
-    ProofreadingMode
+    ProofreadingMode,
+    SplitMode
 )
 from app.services.shared.exceptions import ProofreadingError
 
@@ -67,7 +68,8 @@ class ProofreadingPaperEngine:
     def _process_tex_content(
         self, 
         tex_content: str, 
-        mode: str = ProofreadingMode.WITH_KNOWLEDGE
+        mode: str = ProofreadingMode.WITH_KNOWLEDGE,
+        split_mode: str = SplitMode.SECTION
     ) -> List[Dict[str, Any]]:
         """
         LaTeXコンテンツを処理して校正結果を生成
@@ -75,6 +77,7 @@ class ProofreadingPaperEngine:
         Args:
             tex_content (str): LaTeXコンテンツ
             mode (str): 校正モード
+            split_mode (str): 分割モード
             
         Returns:
             List[Dict[str, Any]]: 校正結果
@@ -85,6 +88,7 @@ class ProofreadingPaperEngine:
         try:
             log_proofreading_debug("LaTeXコンテンツ処理開始", {
                 "mode": mode,
+                "split_mode": split_mode,
                 "content_size": len(tex_content)
             })
             
@@ -92,9 +96,21 @@ class ProofreadingPaperEngine:
             self._validate_tex_content(tex_content)
             
             # チャンキング
-            log_proofreading_debug("LaTeXコンテンツをチャンクに分割")
-            sections = chunking_tex_file(tex_content)
-            log_proofreading_info(f"チャンク分割完了: {len(sections)}セクション")
+            log_proofreading_debug(f"LaTeXコンテンツを{split_mode}モードで分割")
+            if split_mode == SplitMode.SECTION:
+                sections = chunking_tex_file(tex_content)
+            elif split_mode == SplitMode.COMMAND:
+                sections = split_latex_by_command(tex_content)
+            elif split_mode == SplitMode.SENTENCE:
+                sections = split_latex_by_sentence(tex_content)
+            elif split_mode == SplitMode.HYBRID:
+                sections = split_latex_by_hybrid(tex_content)
+            elif split_mode == SplitMode.RECURSIVE_NLP:
+                sections = split_latex_by_recursive_nlp(tex_content)
+            else:
+                raise ProofreadingError(f"サポートされていない分割モードです: {split_mode}")
+            
+            log_proofreading_info(f"チャンク分割完了: {len(sections)}チャンク ({split_mode}モード)")
             
             # 校正処理
             if mode == ProofreadingMode.WITH_KNOWLEDGE:
@@ -144,7 +160,8 @@ class ProofreadingPaperEngine:
     def proofread_uploaded_file(
         self, 
         tex_content: str, 
-        use_knowledge: bool = True
+        use_knowledge: bool = True,
+        split_mode: str = SplitMode.SECTION
     ) -> List[Dict[str, Any]]:
         """
         アップロードされたファイルを校正
@@ -152,6 +169,7 @@ class ProofreadingPaperEngine:
         Args:
             tex_content (str): LaTeXコンテンツ
             use_knowledge (bool): 知識ベースを使用するかどうか
+            split_mode (str): 分割モード
             
         Returns:
             List[Dict[str, Any]]: 校正結果
@@ -163,7 +181,7 @@ class ProofreadingPaperEngine:
             log_proofreading_info(f"アップロードファイル校正を開始 (知識ベース: {use_knowledge})")
             
             mode = ProofreadingMode.WITH_KNOWLEDGE if use_knowledge else ProofreadingMode.WITHOUT_KNOWLEDGE
-            results = self._process_tex_content(tex_content, mode)
+            results = self._process_tex_content(tex_content, mode, split_mode)
             
             log_proofreading_info("アップロードファイル校正が完了")
             return results

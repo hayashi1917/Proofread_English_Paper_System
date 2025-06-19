@@ -38,7 +38,7 @@ def ensure_string(data: Union[str, bytes]) -> str:
         raise ChunkingError(f"テキスト変換に失敗しました: {e}")
 
 
-def validate_text_length(text: str, min_length: int, max_length: int) -> None:
+def validate_text_length(text: str, min_length: int, max_length: int, skip_max_validation: bool = False) -> None:
     """
     テキスト長の妥当性を検証
     
@@ -46,6 +46,7 @@ def validate_text_length(text: str, min_length: int, max_length: int) -> None:
         text (str): 検証対象のテキスト
         min_length (int): 最小長
         max_length (int): 最大長
+        skip_max_validation (bool): 最大長制限をスキップするかどうか
         
     Raises:
         ChunkingError: テキスト長が範囲外の場合
@@ -58,7 +59,7 @@ def validate_text_length(text: str, min_length: int, max_length: int) -> None:
     if text_length < min_length:
         raise ChunkingError(f"テキストが短すぎます (最小: {min_length}文字)")
     
-    if text_length > max_length:
+    if not skip_max_validation and text_length > max_length:
         raise ChunkingError(f"テキストが長すぎます (最大: {max_length}文字)")
 
 

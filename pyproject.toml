@@ -31,6 +31,7 @@ langchain-chroma = "^0.2.4"
 protobuf = "<3.21"
 pathlib = "^1.0.1"
 pandas = "^2.2.3"
+nltk = "^3.9.1"
 
 
 [build-system]

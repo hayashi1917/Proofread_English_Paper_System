@@ -2,7 +2,7 @@
 LaTeXテキスト分割（チャンキング）エンジン
 """
 from typing import List, Dict, Any, Union
-from langchain_text_splitters import LatexTextSplitter
+from langchain.text_splitter import LatexTextSplitter
 
 from app.services.shared.text_utils import ensure_string, validate_text_length, clean_chunk
 from app.services.shared.logging_utils import log_proofreading_debug, log_proofreading_info
@@ -15,6 +15,7 @@ from app.services.knowledge.config.chunking_config import (
     MAX_CHUNK_SIZE
 )
 from app.services.shared.exceptions import ChunkingError
+from app.services.knowledge.core.nlp_chunking_engine import NLPChunkingEngine
 
 
 class ChunkingEngine:
@@ -32,6 +33,8 @@ class ChunkingEngine:
             chunk_size=chunk_size, 
             chunk_overlap=chunk_overlap
         )
+        # NLPベースエンジンを初期化
+        self.nlp_engine = NLPChunkingEngine(chunk_size, chunk_overlap)
     
     def split_by_splitter(self, latex: Union[str, bytes]) -> List[str]:
         """
@@ -48,7 +51,7 @@ class ChunkingEngine:
         """
         try:
             text = ensure_string(latex)
-            validate_text_length(text, MIN_CHUNK_SIZE, MAX_CHUNK_SIZE)
+            validate_text_length(text, MIN_CHUNK_SIZE, MAX_CHUNK_SIZE, skip_max_validation=True)
             
             log_proofreading_debug("LangChain splitterによる分割開始", {
                 "text_length": len(text),
@@ -80,7 +83,7 @@ class ChunkingEngine:
         """
         try:
             text = ensure_string(latex)
-            validate_text_length(text, MIN_CHUNK_SIZE, MAX_CHUNK_SIZE)
+            validate_text_length(text, MIN_CHUNK_SIZE, MAX_CHUNK_SIZE, skip_max_validation=True)
             
             log_proofreading_debug("セクション分割開始", {"text_length": len(text)})
             
@@ -185,3 +188,69 @@ class ChunkingEngine:
             
         except Exception as e:
             raise ChunkingError(f"複数ファイル処理中にエラーが発生しました: {e}")
+    
+    def split_by_command(self, latex: Union[str, bytes]) -> List[str]:
+        """
+        NLPベースのLaTeXコマンド単位分割
+        
+        正規表現ベースより高精度で簡潔な実装
+        
+        Args:
+            latex (Union[str, bytes]): 分割対象のLaTeXテキスト
+            
+        Returns:
+            List[str]: コマンド単位で分割されたチャンクのリスト
+            
+        Raises:
+            ChunkingError: 分割処理に失敗した場合
+        """
+        return self.nlp_engine.split_by_command_nlp(latex)
+    
+    def split_by_sentence(self, latex: Union[str, bytes]) -> List[str]:
+        """
+        NLPベースの文単位分割
+        
+        NLTK使用により学術論文に適した高精度文分割
+        
+        Args:
+            latex (Union[str, bytes]): 分割対象のLaTeXテキスト
+            
+        Returns:
+            List[str]: 文単位で分割されたチャンクのリスト
+            
+        Raises:
+            ChunkingError: 分割処理に失敗した場合
+        """
+        return self.nlp_engine.split_by_sentence_nlp(latex)
+    
+    def split_by_hybrid(self, latex: Union[str, bytes]) -> List[str]:
+        """
+        NLPベースハイブリッド分割: プリアンブルはコマンド単位、本文は文単位で分割
+        
+        LaTeX文書構造を理解した高精度分割
+        
+        Args:
+            latex (Union[str, bytes]): 分割対象のLaTeXテキスト
+            
+        Returns:
+            List[str]: ハイブリッド分割されたチャンクのリスト
+            
+        Raises:
+            ChunkingError: 分割処理に失敗した場合
+        """
+        return self.nlp_engine.split_by_hybrid_nlp(latex)
+    
+    def split_by_recursive_nlp(self, latex: Union[str, bytes]) -> List[str]:
+        """
+        LangChainの高性能RecursiveCharacterTextSplitterを使用した分割
+        
+        Args:
+            latex (Union[str, bytes]): 分割対象のLaTeXテキスト
+            
+        Returns:
+            List[str]: 分割されたチャンクのリスト
+            
+        Raises:
+            ChunkingError: 分割処理に失敗した場合
+        """
+        return self.nlp_engine.split_by_recursive_nlp(latex)

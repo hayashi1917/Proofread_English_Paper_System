@@ -25,5 +25,13 @@ class ProofreadingMode:
     WITH_KNOWLEDGE = "with_knowledge"
     WITHOUT_KNOWLEDGE = "without_knowledge"
 
+# 分割モード
+class SplitMode:
+    SECTION = "section"
+    COMMAND = "command"
+    SENTENCE = "sentence"
+    HYBRID = "hybrid"
+    RECURSIVE_NLP = "recursive_nlp"
+
 # ログ出力設定
 PROOFREADING_PAPER_DEBUG_ENABLED = True

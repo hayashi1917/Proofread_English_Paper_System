@@ -44,13 +44,6 @@ class KnowledgeExtractionService:
             
         Raises:
             KnowledgeExtractionError: 知識抽出に失敗した場合
-            
-        Examples:
-            抽出される知識の例:
-            - "フォントサイズは10ポイントに設定"
-            - "図のキャプションは図の下に配置"
-            - "要約は200語以内に制限"
-            - "引用は著者名と年を記載"
         """
         try:
             log_proofreading_info("LaTeX知識抽出処理を開始")

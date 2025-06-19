@@ -22,7 +22,7 @@ FALLBACK_ENCODING = "utf-8"
 
 # チャンク最小・最大サイズ
 MIN_CHUNK_SIZE = 10
-MAX_CHUNK_SIZE = 10000
+MAX_CHUNK_SIZE = 1000000  # 1MB相当のテキスト長制限に拡大
 
 # ログ出力設定
 CHUNKING_DEBUG_ENABLED = True

@@ -106,6 +106,82 @@ class ChunkingService:
             return self.engine.split_by_section(tex)
         except Exception as e:
             raise ChunkingError(f"単一ファイル処理中にエラーが発生しました: {e}")
+    
+    def split_latex_by_command(self, latex: Union[str, bytes]) -> List[str]:
+        """
+        LaTeXコマンド単位でテキストを分割
+        
+        Args:
+            latex (Union[str, bytes]): 分割対象のLaTeXテキスト
+            
+        Returns:
+            List[str]: コマンド単位で分割されたチャンクのリスト
+            
+        Raises:
+            ChunkingError: 分割処理に失敗した場合
+        """
+        try:
+            log_proofreading_info("LaTeXコマンド単位分割を開始")
+            return self.engine.split_by_command(latex)
+        except Exception as e:
+            raise ChunkingError(f"コマンド単位分割中にエラーが発生しました: {e}")
+    
+    def split_latex_by_sentence(self, latex: Union[str, bytes]) -> List[str]:
+        """
+        文単位でテキストを分割
+        
+        Args:
+            latex (Union[str, bytes]): 分割対象のLaTeXテキスト
+            
+        Returns:
+            List[str]: 文単位で分割されたチャンクのリスト
+            
+        Raises:
+            ChunkingError: 分割処理に失敗した場合
+        """
+        try:
+            log_proofreading_info("文単位分割を開始")
+            return self.engine.split_by_sentence(latex)
+        except Exception as e:
+            raise ChunkingError(f"文単位分割中にエラーが発生しました: {e}")
+    
+    def split_latex_by_hybrid(self, latex: Union[str, bytes]) -> List[str]:
+        """
+        ハイブリッド分割: プリアンブルはコマンド単位、本文は文単位で分割
+        
+        Args:
+            latex (Union[str, bytes]): 分割対象のLaTeXテキスト
+            
+        Returns:
+            List[str]: ハイブリッド分割されたチャンクのリスト
+            
+        Raises:
+            ChunkingError: 分割処理に失敗した場合
+        """
+        try:
+            log_proofreading_info("ハイブリッド分割を開始")
+            return self.engine.split_by_hybrid(latex)
+        except Exception as e:
+            raise ChunkingError(f"ハイブリッド分割中にエラーが発生しました: {e}")
+    
+    def split_latex_by_recursive_nlp(self, latex: Union[str, bytes]) -> List[str]:
+        """
+        LangChain RecursiveCharacterTextSplitterを使用した高性能分割
+        
+        Args:
+            latex (Union[str, bytes]): 分割対象のLaTeXテキスト
+            
+        Returns:
+            List[str]: 高性能分割されたチャンクのリスト
+            
+        Raises:
+            ChunkingError: 分割処理に失敗した場合
+        """
+        try:
+            log_proofreading_info("LangChain再帰的分割を開始")
+            return self.engine.split_by_recursive_nlp(latex)
+        except Exception as e:
+            raise ChunkingError(f"LangChain再帰的分割中にエラーが発生しました: {e}")
 
 
 # 下位互換性のためのサービスインスタンス
@@ -134,3 +210,27 @@ def chunking_tex_file(tex: str) -> List[str]:
     下位互換性のための関数ラッパー
     """
     return _service.chunking_tex_file(tex)
+
+def split_latex_by_command(latex: Union[str, bytes]) -> List[str]:
+    """
+    下位互換性のための関数ラッパー
+    """
+    return _service.split_latex_by_command(latex)
+
+def split_latex_by_sentence(latex: Union[str, bytes]) -> List[str]:
+    """
+    下位互換性のための関数ラッパー
+    """
+    return _service.split_latex_by_sentence(latex)
+
+def split_latex_by_hybrid(latex: Union[str, bytes]) -> List[str]:
+    """
+    下位互換性のための関数ラッパー
+    """
+    return _service.split_latex_by_hybrid(latex)
+
+def split_latex_by_recursive_nlp(latex: Union[str, bytes]) -> List[str]:
+    """
+    下位互換性のための関数ラッパー
+    """
+    return _service.split_latex_by_recursive_nlp(latex)
