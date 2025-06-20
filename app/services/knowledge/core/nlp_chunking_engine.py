@@ -159,58 +159,98 @@ class NLPChunkingEngine:
         except Exception as e:
             raise ChunkingError(f"NLPコマンド分割中にエラーが発生しました: {e}")
     
-    def split_by_hybrid_nlp(self, latex: Union[str, bytes]) -> List[str]:
-        """
-        NLPベースハイブリッド分割: プリアンブルはコマンド単位、本文は文単位
+def split_by_command_nlp(self, latex: Union[str, bytes]) -> List[str]:
+    """
+    LaTeXコマンド構造を理解したNLPベースコマンド分割
+    
+    単純な正規表現ではなく、LaTeX文法を考慮した構造的分割を行います。
+    
+    Args:
+        latex (Union[str, bytes]): 分割対象のLaTeXテキスト
         
-        LaTeX文書構造を理解し、部分ごとに最適な分割方法を適用します。
+    Returns:
+        List[str]: コマンド単位で分割されたチャンクのリスト
         
-        Args:
-            latex (Union[str, bytes]): 分割対象のLaTeXテキスト
+    Raises:
+        ChunkingError: 分割処理に失敗した場合
+    """
+    try:
+        text = ensure_string(latex)
+        validate_text_length(text, MIN_CHUNK_SIZE, MAX_CHUNK_SIZE, skip_max_validation=True)
+        
+        log_proofreading_debug("NLPコマンド分割開始", {"text_length": len(text)})
+        
+        # LaTeX構造パターン（優先度順）
+        latex_patterns = [
+            (r'\\documentclass(?:\[[^\]]*\])?\{[^}]*\}', 'documentclass'),
+            (r'\\usepackage(?:\[[^\]]*\])?\{[^}]*\}', 'usepackage'),
+            (r'\\begin\{[^}]+\}.*?\\end\{[^}]+\}', 'environment'),
+            (r'\\[a-zA-Z*]+(?:\[[^\]]*\])?(?:\{[^{}]*\})*', 'command'),
+        ]
+        
+        # すべてのマッチを収集
+        all_matches = []
+        for pattern, pattern_type in latex_patterns:
+            for match in re.finditer(pattern, text, re.DOTALL):
+                all_matches.append({
+                    'start': match.start(),
+                    'end': match.end(),
+                    'text': match.group(0),
+                    'type': pattern_type,
+                    'priority': latex_patterns.index((pattern, pattern_type))
+                })
+        
+        # 位置でソート
+        all_matches.sort(key=lambda x: x['start'])
+        
+        # 重複を除去（より優先度の高いパターンを残す）
+        filtered_matches = []
+        i = 0
+        while i < len(all_matches):
+            current_match = all_matches[i]
             
-        Returns:
-            List[str]: ハイブリッド分割されたチャンクのリスト
+            # 現在のマッチと重複する後続のマッチを探す
+            overlapping = []
+            j = i
+            while j < len(all_matches) and all_matches[j]['start'] < current_match['end']:
+                overlapping.append(all_matches[j])
+                j += 1
             
-        Raises:
-            ChunkingError: 分割処理に失敗した場合
-        """
-        try:
-            text = ensure_string(latex)
-            validate_text_length(text, MIN_CHUNK_SIZE, MAX_CHUNK_SIZE, skip_max_validation=True)
+            # 重複する中で最も優先度の高いものを選択
+            best_match = min(overlapping, key=lambda x: x['priority'])
+            filtered_matches.append(best_match)
             
-            log_proofreading_debug("NLPハイブリッド分割開始", {"text_length": len(text)})
+            # 選択したマッチの終了位置以降から再開
+            while i < len(all_matches) and all_matches[i]['start'] < best_match['end']:
+                i += 1
+        
+        # チャンクを生成
+        chunks = []
+        current_pos = 0
+        
+        for match in filtered_matches:
+            # マッチ前のテキスト
+            before_text = text[current_pos:match['start']].strip()
+            if before_text:
+                chunks.append(clean_chunk(before_text))
             
-            chunks = []
-            
-            # 1. 文書構造の解析
-            begin_doc_match = re.search(r'\\begin\{document\}', text)
-            if begin_doc_match:
-                preamble = text[:begin_doc_match.start()].strip()
-                document_content = text[begin_doc_match.start():].strip()
-            else:
-                preamble = text
-                document_content = ""
-            
-            # 2. プリアンブル部分をコマンド単位で分割
-            if preamble:
-                log_proofreading_debug("プリアンブルをNLPコマンド分割")
-                preamble_chunks = self.split_by_command_nlp(preamble)
-                chunks.extend(preamble_chunks)
-            
-            # 3. 本文部分をNLP文単位で分割
-            if document_content:
-                log_proofreading_debug("本文をNLP文単位分割")
-                content_chunks = self.split_by_sentence_nlp(document_content)
-                chunks.extend(content_chunks)
-            
-            # 空チャンクを除去
-            cleaned_chunks = [clean_chunk(chunk) for chunk in chunks if chunk]
-            
-            log_proofreading_info(f"NLPハイブリッド分割完了: {len(cleaned_chunks)}チャンク")
-            return cleaned_chunks
-            
-        except Exception as e:
-            raise ChunkingError(f"NLPハイブリッド分割中にエラーが発生しました: {e}")
+            # マッチしたコマンド/環境
+            chunks.append(clean_chunk(match['text']))
+            current_pos = match['end']
+        
+        # 残りのテキスト
+        remaining = text[current_pos:].strip()
+        if remaining:
+            chunks.append(clean_chunk(remaining))
+        
+        # 空チャンクを除去
+        cleaned_chunks = [chunk for chunk in chunks if chunk]
+        
+        log_proofreading_info(f"NLPコマンド分割完了: {len(cleaned_chunks)}チャンク")
+        return cleaned_chunks
+        
+    except Exception as e:
+        raise ChunkingError(f"NLPコマンド分割中にエラーが発生しました: {e}")
     
     def split_by_recursive_nlp(self, latex: Union[str, bytes]) -> List[str]:
         """

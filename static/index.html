@@ -460,6 +460,42 @@
                             <pre style="background-color: #e9f7ef; font-style: italic;">${escapeHtml(item.description)}</pre>
                         </div>
                 `;
+                // sentences フィールドが存在する場合は表示（新しい対比形式）
+                if (item.sentences && Array.isArray(item.sentences) && item.sentences.length > 0) {
+                    htmlContent += `
+                        <div>
+                            <span class="label">校正箇所の英文（対比）:</span>
+                            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 4px; border: 1px solid #e0e0e0;">
+                    `;
+                    item.sentences.forEach((sentencePair, sentIndex) => {
+                        htmlContent += `
+                            <div style="margin-bottom: 15px; padding: 10px; border: 1px solid #e6e6e6; border-radius: 4px; background-color: white;">
+                                <div style="margin-bottom: 8px;">
+                                    <strong style="color: #d73527;">校正前:</strong>
+                                    <div style="background-color: #fff5f5; padding: 8px; border-radius: 3px; margin-top: 4px; border-left: 3px solid #d73527;">
+                                        ${escapeHtml(sentencePair.pre_proofread)}
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong style="color: #2d8f47;">校正後:</strong>
+                                    <div style="background-color: #f0f9f0; padding: 8px; border-radius: 3px; margin-top: 4px; border-left: 3px solid #2d8f47;">
+                                        ${escapeHtml(sentencePair.post_proofread)}
+                                    </div>
+                                </div>
+                                <div>
+                                    <strong style="color: #4f46e5;">修正理由:</strong>
+                                    <div style="background-color: #f0f4ff; padding: 8px; border-radius: 3px; margin-top: 4px; border-left: 3px solid #4f46e5; font-style: italic;">
+                                        ${escapeHtml(sentencePair.description)}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    htmlContent += `
+                            </div>
+                        </div>
+                    `;
+                }
                 // queries と knowledge は存在する場合のみ表示
                 if (item.queries) {
                     const queriesText = Array.isArray(item.queries) ? item.queries.join('; ') : item.queries;

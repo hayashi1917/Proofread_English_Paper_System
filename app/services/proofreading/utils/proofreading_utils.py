@@ -50,6 +50,7 @@ def create_proofread_section_dict(
         "pre_proofread": result.pre_proofread,
         "post_proofread": result.post_proofread,
         "description": result.description,
+        "sentences": result.sentences,
         "queries": queries,
         "knowledge": knowledge
     }
@@ -68,6 +69,7 @@ def create_proofread_section_dict_without_knowledge(result: ProofreadResult) -> 
         "pre_proofread": result.pre_proofread,
         "post_proofread": result.post_proofread,
         "description": result.description,
+        "sentences": result.sentences,
         "queries": [],
         "knowledge": ""
     }

@@ -41,6 +41,20 @@ class CreateQueriesByHyDE(BaseModel):
         description="HyDEによる生成クエリのリスト（1〜10 件）"
     )
 
+class SentenceProofreadPair(BaseModel):
+    pre_proofread: str = Field(
+        ...,
+        description="校正前の英文"
+    )
+    post_proofread: str = Field(
+        ...,
+        description="校正後の英文"
+    )
+    description: str = Field(
+        ...,
+        description="この文の修正根拠・理由"
+    )
+
 class ProofreadResult(BaseModel):
     pre_proofread: Optional[str] = Field(
         None, 
@@ -52,11 +66,11 @@ class ProofreadResult(BaseModel):
     )
     description: str = Field(
         ..., 
-        description="校正の根拠"
+        description="校正全体の総括的な根拠・概要"
     )
-    sentences: List[str] = Field(
+    sentences: List[SentenceProofreadPair] = Field(
         ..., 
-        description="校正箇所の英文"
+        description="校正箇所の英文（校正前後の対比）"
     )
 
 
