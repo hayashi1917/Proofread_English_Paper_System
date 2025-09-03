@@ -32,6 +32,7 @@ protobuf = "<3.21"
 pathlib = "^1.0.1"
 pandas = "^2.2.3"
 nltk = "^3.9.1"
+pymupdf = "^1.26.1"
 
 
 [build-system]
